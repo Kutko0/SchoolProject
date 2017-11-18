@@ -1,0 +1,357 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+/*  FONTS  */
+/* poppins-regular - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/poppins-v4-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Poppins Regular'), local('Poppins-Regular'),
+       url('../fonts/poppins-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v4-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-600 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/poppins-v4-latin-600.eot'); /* IE9 Compat Modes */
+  src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
+       url('../fonts/poppins-v4-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v4-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v4-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v4-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v4-latin-600.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-800 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../fonts/poppins-v4-latin-800.eot'); /* IE9 Compat Modes */
+  src: local('Poppins ExtraBold'), local('Poppins-ExtraBold'),
+       url('../fonts/poppins-v4-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v4-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v4-latin-800.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v4-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v4-latin-800.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-900 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/poppins-v4-latin-900.eot'); /* IE9 Compat Modes */
+  src: local('Poppins Black'), local('Poppins-Black'),
+       url('../fonts/poppins-v4-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v4-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v4-latin-900.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v4-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v4-latin-900.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/***********************************/
+.main-wrapper{
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  background-color: #f2f2f2;
+}
+footer{
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  background-color: rgb(30, 32, 43);
+  color: rgb(194, 216, 238);
+}
+footer p,a{
+  margin: 0;
+}
+.mainTitle{
+  margin: 0;
+  font-size: 32px;
+  font-family: Poppins;
+  font-weight: 800;
+  color: rgb(0, 62, 249);
+  z-index: 10;
+}
+.mainTitle a{
+  text-decoration: none;
+  color: inherit;
+}
+.mainTitle a:hover{
+  text-decoration: none;
+  color: inherit;
+}
+.titleCo{
+  height: 75px;
+  padding-top: 5px;
+  width: 100%;
+  background-color: rgba(0, 70, 255, 0.15);
+  border-bottom: 2px solid  rgb(0, 62, 249);
+  text-align: center;
+  font-family: Poppins;
+  font-weight: 400;
+  color: #fbfbfb;
+  -webkit-box-shadow: 0px 2px 10px 0px #0500ff;
+  box-shadow: 0px 2px 10px 0px #0500ff;
+}
+.defCo{
+  font-family: Poppins;
+  font-weight: 600;
+  width: 1200px;
+  margin: auto;
+  height: auto;
+  text-align: center;
+}
+.defCo a{
+  line-height: 235px;
+  vertical-align: middle;
+  font-size: 22px;
+  display: inline-block;
+  border-radius: 1000px;
+  box-shadow: 0px 2px 10px 0px #0057ff;
+  -webkit-box-shadow: 0px 2px 10px 0px #0057ff;
+  background-color: rgba(0, 10, 255, 0.05);
+  border: 0;
+  width: 235px;
+  height: 235px;
+  margin: auto;
+  margin-top: 75px;
+}
+#BtnZiak{
+  margin-right: 75px;
+}
+#BtnUcitel{
+  margin-left: 75px;
+}
+#BtnUcitelDiv{
+  margin: auto;
+  display: inline-block;
+}
+#blogOp{
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.defCo a:hover{
+  text-decoration: none;
+  font-size: 24px;
+  color: #f0f0f0;
+  transition: 0.5s;
+  box-shadow: inset 0px 0px 15px 5px #0042ff;
+  -webkit-box-shadow: inset 0px 0px 15px 5px #0042ff;
+  background-color: rgba(0, 56, 255, 0.4);
+}
+.loginForm{
+  padding-top: 40px;
+  margin: auto;
+  text-align: center;
+  margin-top: 20vh;
+  width: 600px;
+  height: 250px;
+  border: 4px #2f2f2f  solid;
+  border-radius: 10px;
+  background-color: #fcfcfc;
+  box-shadow: 0px 2px 10px 0px #111111;
+  -webkit-box-shadow: 0px 2px 10px 0px #111111;
+}
+.loginForm button{
+  width: 135px;
+  height: 46px;
+  border: 2px solid #0042ff;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 42px;
+  vertical-align: middle;
+  font-style: Poppins;
+  font-weight: 800;
+  background-color: #FFFFFF;
+  color:#4f4f4f;
+  cursor: pointer;
+  margin-top: -8px; 
+}
+.loginForm button:hover{
+  background-color: rgba(0, 64, 255, 0.6);
+  line-height: 40px;
+  border-width: 3px;
+  transition: 0.5s;
+  color: #e4e4e4;
+}
+#backBtn{
+  position: absolute;
+  text-decoration: none;
+  color: #0042ff;
+  font-size: 70px;
+  width: 70px;
+  height: 70px;
+  line-height: 60px;
+  text-align: center;
+  left: 60px;
+  top: 90px;
+  background-color: inherit;
+  border: 2px solid #0042ff;
+  border-radius: 150px;
+}
+#backBtn:hover{
+  text-decoration: none;
+  padding-right: 8px;
+  transition: 0.6s;
+}
+.formLine{
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  height: 50px;
+  margin-top: 12px;
+}
+.formLine label{
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: right;
+  width: 40%;
+  float: left;
+  font-size: 22px;
+}
+.formLine input{
+  border-radius: 10px;
+  width: 55%;
+  float: right;
+  padding: 2px 5px 2px 5px;
+  font-size: 18px;
+  line-height: 28px;
+  vertical-align: middle;
+}
+.valid{
+  border:2px solid;
+  border-color: #33ff4e ;
+}
+.invalid{
+  border:2px solid;
+  border-color: #f13c3c;
+}
+
+#backBtnTwo{
+    line-height: 85px;
+    vertical-align: middle;
+    margin-top:10px;
+    width:85px;
+    height:85px;
+    float:left;
+    font-size:16px;
+}
+#regForm{
+    height: 315px;
+}
+/* MEDIA SHIT */
+/* LOW SHIT PX */
+@media only screen and (max-width: 550px){
+    .titleCo{
+      height: 55px;
+    }
+    .titleCo p{
+      font-size: 12px;
+    }
+    .mainTitle{
+      font-size: 20px;
+    }
+    .defCo{
+      width: 250px;
+    }
+    .defCo a{
+      margin-top: 25px;
+      width: 150px;
+      height: 150px;
+      line-height: 150px;
+      font-size: 16px;
+    }
+    .defCo a:hover{
+      font-size: 19px;
+    }
+    #blogOp{
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+    #BtnZiak{
+      margin-right: 0px;
+    }
+    #BtnUcitel{
+      margin-left: 0px;
+    }
+    #BtnUcitelDiv{
+      width: 100%;
+    }
+
+}
+/* 800 PX */
+@media only screen and (min-width: 550px) and (max-width: 850px){
+    .defCo{
+      width: 550px;
+    }
+    .defCo a{
+      margin-top: 40px;
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      font-size: 20px;
+    }
+    .defCo a:hover{
+      font-size: 22px;
+    }
+    #blogOp{
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    #BtnZiak{
+      margin-right: 0px;
+    }
+    #BtnUcitel{
+      margin-left: 0px;
+    }
+    #BtnUcitelDiv{
+      width: 100%;
+    }
+
+}
+/* 1200PX */
+@media only screen and (min-width: 850px) and (max-width: 1200px){
+    .defCo{
+      width: 800px;
+    }
+    .defCo a{
+      margin-top: 65px;
+      width: 210px;
+      height: 210px;
+      line-height: 210px;
+    }
+    #blogOp{
+      margin-top: 40px;
+    }
+    #backBtn{
+      width: 40px;
+      height: 40px;
+      line-height: 30px;
+    }
+}
+/* 1600PX */
+@media only screen and (min-width: 1200px) and (max-width: 1600px){
+    #backBtn{
+      width: 55px;
+      height: 55px;
+      line-height: 45px;
+    }
+    .defCo a{
+      margin-top: 65px;
+      width: 215px;
+      height: 215px;
+      line-height: 215px;
+    }
+    #blogOp{
+      margin-top: 50px;
+      margin-bottom: 65px;
+    }
+}
+
