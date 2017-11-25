@@ -22,6 +22,11 @@
       </div>
 
       <div class="formLine">
+        <label for="regRealName" style="text-align:center">Meno a priezvisko :</label>
+        <input type="text" name="regRealName" value="" placeholder="Michal Petrzlen" id="Rrealname" required>
+      </div>
+
+      <div class="formLine">
         <label for="regPassword" style="text-align:center">Heslo :</label>
         <input type="password" name="regPassword" value="" placeholder="Pa$$w0rd" id="Rpass" required>
       </div>
@@ -31,7 +36,7 @@
         <input type="password" name="regZPassword" value="" placeholder="Pa$$w0rd" id="RZpass" required>
       </div>
       
-      <p style="color:red;"></p>
+      <p style="color:red;" id="someText"></p>
       <button type="submit" name="regBtn">Registrovat</button>
 
     </fieldset>
@@ -59,9 +64,9 @@
           $(this).removeClass('valid');
       }
     });
-    $('#Rpass').blur(function(){
+    $('#Rrealname').blur(function(){
       var tmpval = $(this).val().length;
-      if(tmpval >= 3) {
+      if(tmpval >= 4 ) {
           $(this).addClass('valid');
           $(this).removeClass('invalid');
       } else {
@@ -69,10 +74,24 @@
           $(this).removeClass('valid');
       }
     });
+    $('#Rpass').blur(function(){
+      var tmpval = $(this).val().length;
+      if(tmpval >= 6) {
+          $(".loginForm").css("height", 370);
+          $('#someText').text("");
+          $(this).addClass('valid');
+          $(this).removeClass('invalid');
+      } else {
+          $('#someText').text("Hesla musi obsahovat minimalne 6 znakov!");
+          $(".loginForm").css("height", 390);
+          $(this).addClass('invalid');
+          $(this).removeClass('valid');
+      }
+    });
     $('#RZpass').blur(function(){
       var tmpval = $(this).val().length;
       if($(this).val() == $('#Rpass').val()){
-          $(".loginForm").css("height", 315);
+          $(".loginForm").css("height", 370);
           $('#someText').text("");
           if(tmpval >= 6) {
               $(this).addClass('valid');
@@ -83,7 +102,7 @@
           }
       }else{
           $(this).addClass('invalid');
-          $(".loginForm").css("height", 340);
+          $(".loginForm").css("height", 390);
           $('#someText').text("Hesla nie su rovnake!");
       }
   });

@@ -30,26 +30,36 @@
                 } 
         }
     }else if(isset($_POST['regBtn'])){
-        if((requiredInput($_POST['regName']) !== TRUE) 
-         || (requiredInput($_POST['regPassword']) !== TRUE) 
-         || (requiredInput($_POST['regZPassword']) !== TRUE)) {
+        $email = $_POST['regName'];
+        $pass = $_POST['regPassword'];
+        $passAgain = $_POST['regZPassword'];
+        $realName = $_POST['regRealName'];
+        //multiple require func
+        if((requiredInput($email) !== TRUE)
+         || (requiredInput($pass) !== TRUE)
+         || (requiredInput($passAgain) !== TRUE)
+         || (requiredInput($realName) !== TRUE)) {
               header('Location: ../reg/index.php?f=y1');
         }else{
-            if(isEmail($_POST['regName'])){
-                if($_POST['regPassword'] === $_POST['regZPassword']){
-                    if(isEmailInUse($_POST['regName'])){
-                        echo "I got here";
+            if(isEmail($email)){
+                if($pass === $passAgain){
+                    if(isEmailInUse($email)){
+                        if(registration($email, $realName, $pass)){
+                            echo 'Finaly';
+                        }else{
+                            echo 'Bitch better have ma moni';
+                        }
                     }else{
                         header('Location: ../reg/index.php?f=y4');    
-                    }
+                        }
                 }else{
                     header('Location: ../reg/index.php?f=y3');
-                }
+                    }
             }else{
                 header('Location: ../reg/index.php?f=y2');
+                }
             }
         }
-    }
   
 
   ?>

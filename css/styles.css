@@ -244,7 +244,8 @@ footer p,a{
     font-size:16px;
 }
 #regForm{
-    height: 315px;
+    height: 370px;
+    margin-top: 15vh;
 }
 /* MEDIA SHIT */
 /* LOW SHIT PX */

@@ -1,11 +1,11 @@
 <?php
-function connect_to_db(){
 
   DEFINE('DB_USERNAME', 'root');
   DEFINE('DB_PASSWORD', 'root');
   DEFINE('DB_HOST', 'localhost');
   DEFINE('DB_DATABASE', 'skolausers');
 
+function connect_to_db(){
   $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE, 3308);
 
   if ($mysqli->connect_errno) {
@@ -49,6 +49,27 @@ function login($type, $name, $pass) {
   }else{
     die("<h1>SOMETHING WENT WRONG</h1>");
   }
+
+}
+
+
+function registration($email, $name, $pass){
+    $mysqli = connect_to_db();
+    $hashPass = hash('sha256', $pass);
+    $query = "INSERT INTO `ziaci_4` (u_meno, real_meno, heslo)
+                VALUES ('" . $mysqli->real_escape_string($email) . "',
+                        '" . $mysqli->real_escape_string($name). "',
+                        '" . $mysqli->real_escape_string($hashPass) . "');";
+    echo 'here1';
+    if($mysqli->query($query) == TRUE){
+        echo 'here3';
+        $mysqli->close();
+        return TRUE;
+    }
+
+    $mysqli->close();
+    echo 'here2';
+    return FALSE;
 
 }
 

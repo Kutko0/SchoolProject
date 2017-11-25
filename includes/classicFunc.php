@@ -18,11 +18,15 @@ function isEmail($name){
 }
 function isEmailInUse($name){
     $mysqli = connect_to_db();
-    $query = "SELECT `user_id`, `real_meno` FROM `ziaci_4` WHERE `u_meno` LIKE '" . $mysqli->real_escape_string($name) . "';";
-    if($res = $mysqli->query($query)){
-        $mysqli->close();
-        return FALSE;
-    }
+    $query = "SELECT `u_meno`, `user_id`, `real_meno` FROM `ziaci_4` WHERE `u_meno` = '" . $mysqli->real_escape_string($name) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+        if($res[0] == $name){}
+            $mysqli->close();
+            return FALSE;
+        }else{
+            $mysqli->close();
+            return TRUE;
+        }
     $mysqli->close();
     return TRUE;
 }
