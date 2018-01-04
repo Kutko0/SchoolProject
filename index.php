@@ -21,12 +21,12 @@
       </div>
       <div class="defCo">
 
-        <a href="./login/index.php?type=ziak" class="loginOp" id="BtnZiak">Ziak login</a>
+        <a href="./login/index.php?type=ziak" class="loginOp mainBubbles" id="BtnZiak">Ziak login</a>
         <div id="BtnUcitelDiv">
-        <a href="./login/index.php?type=ucitel" class="loginOp" id="BtnUcitel">Ucitel login</a>
+        <a href="./login/index.php?type=ucitel" class="loginOp mainBubbles" id="BtnUcitel">Ucitel login</a>
         </div>
         <br>
-        <a href="./reg/" id="blogOp" >Registracia</a>
+        <a href="./reg/" class='mainBubbles' id="blogOp" >Registracia</a>
 
       </div>
 

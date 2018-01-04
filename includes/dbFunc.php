@@ -15,7 +15,7 @@ function connect_to_db(){
 }
 
 
-function login($type, $name, $pass) { 
+function login($type, $name, $pass, $typeOfLogin) {
   
   // potom pouzi aj type chuju
   $mysqli = connect_to_db();
@@ -34,7 +34,7 @@ function login($type, $name, $pass) {
       // premennej Session, kvoli dalsiemu pouzitiu i inych castiach programu
     $_SESSION['mail'] =  $row[0];
     $_SESSION['rname'] = $row[3];  
-    $_SESSION['user_id'] = $row[4];  
+    $_SESSION['user_id'] = $row[4];
       // ak sa prvy krat prihlasil 'flog' = first_log
         if(intval($row[2]) === 1){
             $_SESSION['flog'] = TRUE;
@@ -60,15 +60,12 @@ function registration($email, $name, $pass){
                 VALUES ('" . $mysqli->real_escape_string($email) . "',
                         '" . $mysqli->real_escape_string($name). "',
                         '" . $mysqli->real_escape_string($hashPass) . "');";
-    echo 'here1';
     if($mysqli->query($query) == TRUE){
-        echo 'here3';
         $mysqli->close();
         return TRUE;
     }
 
     $mysqli->close();
-    echo 'here2';
     return FALSE;
 
 }

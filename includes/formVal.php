@@ -16,7 +16,7 @@
           $password = $_POST['loginPassword'];
           $type = $_SESSION['type'];
             //login je metoda z dbFunc ktora vrati TRUE ak vstup existuje
-            if(login($type, $name, $password) === TRUE){
+            if(login($type, $name, $password, $type) === TRUE){
                 if($_SESSION['flog'] === TRUE){
                     //ak je prvy krat prihlaseny tak ho presmeruje na zmenu hesla
                     header('Location: ../changePass/');
@@ -45,9 +45,11 @@
                 if($pass === $passAgain){
                     if(isEmailInUse($email)){
                         if(registration($email, $realName, $pass)){
-                            echo 'Finaly';
+                            // presmerovat na jeho ucet
+                            $_SESSION['newUsrInfo'] = '';
+                            header('Location: ../user/');
                         }else{
-                            echo 'Bitch better have ma moni';
+                            header('Location: ../reg/index.php?f=y5');
                         }
                     }else{
                         header('Location: ../reg/index.php?f=y4');    

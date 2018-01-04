@@ -4,13 +4,32 @@
     // doplnit y2 error = input nie je email
     // doplnit y3 error = hesla sa nerovnaju
     // doplnit y4 error = email sa uz pouziva
-
+    if(isset($_GET['f'])){
+        $err = strtoupper($_GET['f']);
+        if($err == 'Y1'){
+            $msg = 'Vyplnte vsetky polia !';
+        }else if($err == 'Y2'){
+            $msg = 'Vas vstup nie je vo formate <br> e-mail !';
+        }else if($err == 'Y3'){
+            $msg = 'Vase hesla sa nezhoduju !';
+        }else if($err == 'Y4'){
+            $msg = 'E-mail, ktory ste zadali sa <br> uz pouziva !';
+        }else if($err == 'Y5'){
+            $msg = 'Nastala chyba pri registracii <br> skuste to znova neskvor !';
+        }
+    }
 ?>
    
 
    
    <div class='defCo'>
-    
+   <?php
+       if(isset($msg)){
+            echo "<p style='color:red;font-weight:800;width:300px;
+                margin:auto;margin-top:25px;margin-bottom:-85px;
+                font-size:20px;'>" . $msg . "</p>";
+       }
+    ?>
     <form class="loginForm" action="../includes/formVal.php" method="post" id="regForm">
    
     <h3 style="color: #007bff;font-family: Poppins;font-weight: 600;margin:auto;padding:0;margin-top:-20px;">Registracia</h3>
@@ -37,7 +56,7 @@
       </div>
       
       <p style="color:red;" id="someText"></p>
-      <button type="submit" name="regBtn">Registrovat</button>
+      <button id="subBtnN" type="submit" name="regBtn">Registrovat</button>
 
     </fieldset>
     
@@ -53,7 +72,7 @@
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
-    
+    $('#subBtnN').prop('disabled', true);
     $('#Rname').blur(function(){
       var tmpval = $(this).val().length;
       if(tmpval >= 3 && validateEmail($(this).val())) {
@@ -96,6 +115,7 @@
           if(tmpval >= 6) {
               $(this).addClass('valid');
               $(this).removeClass('invalid');
+              $('#subBtnN').prop('disabled', false);
           } else {
               $(this).addClass('invalid');
               $(this).removeClass('valid');
