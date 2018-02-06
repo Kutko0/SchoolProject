@@ -14,9 +14,8 @@
           //ak vsetko prebehlo v poriadku pozre sa do DB ci existuje tento vstup
           $name = $_POST['loginName'];
           $password = $_POST['loginPassword'];
-          $type = $_SESSION['type'];
             //login je metoda z dbFunc ktora vrati TRUE ak vstup existuje
-            if(login($type, $name, $password, $type) === TRUE){
+            if(login($type, $name, $password) === TRUE){
                 if($_SESSION['flog'] === TRUE){
                     //ak je prvy krat prihlaseny tak ho presmeruje na zmenu hesla
                     header('Location: ../changePass/');
@@ -34,6 +33,7 @@
         $pass = $_POST['regPassword'];
         $passAgain = $_POST['regZPassword'];
         $realName = $_POST['regRealName'];
+
         //multiple require func
         if((requiredInput($email) !== TRUE)
          || (requiredInput($pass) !== TRUE)
@@ -44,9 +44,17 @@
             if(isEmail($email)){
                 if($pass === $passAgain){
                     if(isEmailInUse($email)){
-                        if(registration($email, $realName, $pass)){
+                        while(TRUE){
+                            $hashID = hash('sha256', $email . time() . 'spsjm');
+                            if(isHashIdInUse($hashID)){
+                                break;
+                                }
+                            }
+                        if(registration($email, $realName, $pass, $hashID)){
                             // presmerovat na jeho ucet
-                            $_SESSION['newUsrInfo'] = '';
+                            $_SESSION['mail'] = $email;
+                            $_SESSION['rmeno'] = $realName;
+                            $_SESSION['status'] = 1;
                             header('Location: ../user/');
                         }else{
                             header('Location: ../reg/index.php?f=y5');
@@ -61,8 +69,19 @@
                 header('Location: ../reg/index.php?f=y2');
                 }
             }
+    }else if(isset($_POST['forgotBtn'])){
+        header('Location: ../passRecovery');
+
+    }else if(isset($_POST['recoveryBtn'])){
+        $email = $_POST['loginName'];
+        if(isEmail($email)){
+            if(!isEmailInUse($email)){
+            header('Location: ../passRecovery/index.php?s=1');
+            }
+        }else{
+            header('Location: ../passRecovery/index.php?f=1');
         }
-  
+    }
 
   ?>
 

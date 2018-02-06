@@ -1,9 +1,30 @@
+<?php
+    switch($_SESSION['status']){
+        case 1:
+            $status = 'ziak';
+            break;
+        case 5:
+            $status = 'ucitel';
+            break;
+        case 9:
+            $status = 'admin';
+            break;
+        default:
+            $status = 'Chris Angel';
+            break;
+    }
+
+?>
+
+<form action="../" method="post">
+    <button type='submit' name='logOffButton' id='logOffBtn'>Odhlasit</button>
+</form>
 
 <div class='defCo'>
     <div class='userInterface'>
         <div class="mainInfo">
             <p class='userName'><b><?php echo $_SESSION['rname']; ?></b></p>
-            <p class='userType'>Typ uctu: <?php echo $_SESSION['type']; ?></p>
+            <p class='userType'>Typ uctu: <?php echo $status; ?></p>
         </div>
         <div class='howTo'><button id='howToBtn'>Ako na to?</button></div>
         <div class='mainArea'>
@@ -15,11 +36,11 @@
 
 
 <div id='overlay'>
-    <div class='howToExplnation'>
-        <div class='howToTitle'>
+    <div class='overlayMainBox'>
+        <div class='overlayTitle'>
            	<h2>Postup</h2>
         </div>
-        <div class='howToSteps'>
+        <div class='overlaySteps'>
             <p>1. Somethin somethin</p>
             <p>2. Somethin somethin</p>
             <p>3. Somethin somethin</p>

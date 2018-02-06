@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if(isset($_POST['logOffButton'])){
+        session_destroy();
+    }else if(isset($_SESSION['mail'])){
+        header('Location: ./user/');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,9 +31,9 @@
       </div>
       <div class="defCo">
 
-        <a href="./login/index.php?type=ziak" class="loginOp mainBubbles" id="BtnZiak">Ziak login</a>
+        <a href="./login/" class="loginOp mainBubbles" id="BtnZiak">Ziak login</a>
         <div id="BtnUcitelDiv">
-        <a href="./login/index.php?type=ucitel" class="loginOp mainBubbles" id="BtnUcitel">Ucitel login</a>
+        <a href="./login/" class="loginOp mainBubbles" id="BtnUcitel">Ucitel login</a>
         </div>
         <br>
         <a href="./reg/" class='mainBubbles' id="blogOp" >Registracia</a>

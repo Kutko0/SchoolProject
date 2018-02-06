@@ -15,7 +15,7 @@ function connect_to_db(){
 }
 
 
-function login($type, $name, $pass, $typeOfLogin) {
+function login($type, $name, $pass) {
   
   // potom pouzi aj type chuju
   $mysqli = connect_to_db();
@@ -23,8 +23,9 @@ function login($type, $name, $pass, $typeOfLogin) {
   $password = hash('sha256', $pass);
   // query to db  
   // comparing name and encrypted password
-  $queryCommand = "SELECT `u_meno`, `heslo`, `first_log`, `real_meno`,`user_id` FROM `ziaci_4` 
-                    WHERE `u_meno` LIKE '" . $mysqli->real_escape_string($name) . "' 
+  $queryCommand = "SELECT `email`, `heslo`, `first_log`, `real_meno`,`user_id`, `status`
+                    FROM `users`
+                    WHERE `email` LIKE '" . $mysqli->real_escape_string($name) . "'
                     AND `heslo` LIKE '" . $password . "' LIMIT 1";    
   
   if($result = $mysqli->query($queryCommand)){
@@ -35,6 +36,7 @@ function login($type, $name, $pass, $typeOfLogin) {
     $_SESSION['mail'] =  $row[0];
     $_SESSION['rname'] = $row[3];  
     $_SESSION['user_id'] = $row[4];
+    $_SESSION['status'] = $row[5];
       // ak sa prvy krat prihlasil 'flog' = first_log
         if(intval($row[2]) === 1){
             $_SESSION['flog'] = TRUE;
@@ -53,13 +55,15 @@ function login($type, $name, $pass, $typeOfLogin) {
 }
 
 
-function registration($email, $name, $pass){
+function registration($email, $name, $pass, $hashID){
     $mysqli = connect_to_db();
     $hashPass = hash('sha256', $pass);
-    $query = "INSERT INTO `ziaci_4` (u_meno, real_meno, heslo)
+    $query = "INSERT INTO `users` (email, real_meno, heslo, hash_id, status)
                 VALUES ('" . $mysqli->real_escape_string($email) . "',
                         '" . $mysqli->real_escape_string($name). "',
-                        '" . $mysqli->real_escape_string($hashPass) . "');";
+                        '" . $mysqli->real_escape_string($hashPass) . "',
+                        '" . $mysqli->real_escape_string($hashID). "',
+                        '" . $mysqli->real_escape_string(1). "');";
     if($mysqli->query($query) == TRUE){
         $mysqli->close();
         return TRUE;

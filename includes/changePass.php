@@ -12,22 +12,24 @@
                     $mysqli = connect_to_db();
                 
                     $passw = hash('sha256', $_POST['newPassa']);
-                    $query = "UPDATE `ziaci_4` set heslo='" . $mysqli->real_escape_string($passw) . 
+                    $query = "UPDATE `users` set heslo='" . $mysqli->real_escape_string($passw) .
                             "' WHERE user_id='" . $mysqli->real_escape_string($_SESSION["user_id"]) . "';";
                     $mysqli->query($query);
                 
-                    $query = "UPDATE `ziaci_4` set first_log='" . $mysqli->real_escape_string(0) . 
+                    $query = "UPDATE `users` set first_log='" . $mysqli->real_escape_string(0) .
                             "' WHERE user_id='" . $mysqli->real_escape_string($_SESSION["user_id"]) . "';";
                     $mysqli->query($query);
                 
                     $mysqli->close();
-                    echo "<p style='color:#23ff32;font-weight:800;width:350px;margin:auto;
-                            margin-top:25px;margin-bottom:-90px;font-size:20px;'>
-                            Uspesne zmenene heslo!
-                            </p>";
+//                    echo "<p style='color:#23ff32;font-weight:800;width:350px;margin:auto;
+//                            margin-top:25px;margin-bottom:-72px;font-size:20px;text-align:center;'>
+//                            Uspesne zmenene heslo!
+//                            </p>";
+                    header('Location: ../user/');
+
             }else{
                 echo  "<p style='color:red;font-weight:800;width:350px;margin:auto;
-                            margin-top:25px;margin-bottom:-90px;font-size:20px;'>
+                            margin-top:25px;margin-bottom:-72px;font-size:20px;text-align:center;'>
                             Nevyplnili ste vsetky polia alebo<br> 
                             vase heslo nie je dostatocne dlhe (min. 6 charakterov)
                             </p>";
