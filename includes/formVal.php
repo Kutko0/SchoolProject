@@ -46,7 +46,7 @@
                     if(isEmailInUse($email)){
                         while(TRUE){
                             $hashID = hash('sha256', $email . time() . 'spsjm');
-                            if(isHashIdInUse($hashID)){
+                            if(isHashIdInUse($hashID, 'users')){
                                 break;
                                 }
                             }
@@ -55,6 +55,7 @@
                             $_SESSION['mail'] = $email;
                             $_SESSION['rmeno'] = $realName;
                             $_SESSION['status'] = 1;
+                            $_SESSION['hash_id'] = $hashID;
                             header('Location: ../user/');
                         }else{
                             header('Location: ../reg/index.php?f=y5');
@@ -76,12 +77,47 @@
         $email = $_POST['loginName'];
         if(isEmail($email)){
             if(!isEmailInUse($email)){
-            header('Location: ../passRecovery/index.php?s=1');
+                if(sendRecoveryMail($email)){
+                    header('Location: ../passRecovery/index.php?s=1');
+                }else{
+                    header('Location: ../passRecovery/index.php?ff=1');
+                }
+
             }
         }else{
             header('Location: ../passRecovery/index.php?f=1');
         }
+    }else if(isset($_POST['newUserInfoBtn'])){
+        $last_name = $_POST['infoSurName'];
+        $first_name = $_POST['infoName'];
+        $odbor = $_POST['infoOdbor'];
+        $class = $_POST['infoTrieda'];
+        $soc = $_POST['infoSoc'];
+        $hash_id = $_SESSION['hash_id'];
+
+        if((requiredInput($last_name) !== TRUE)
+         || (requiredInput($first_name) !== TRUE)
+         || (requiredInput($odbor) !== TRUE)
+         || (requiredInput($class) !== TRUE)
+         || (requiredInput($soc) !== TRUE)) {
+              header('Location: ../user/index.php?ci=inf&f=1');
+        }else{
+            if(isHashIdInUse($hash_id, 'users_info')){
+               if(sendUserInfo($last_name, $first_name, $odbor, $class, $soc, $hash_id, TRUE)){
+                   header('Location: ../user/index.php?ci=inf&s=1');
+               }else{
+                   header('Location: ../user/index.php?ci=inf&f=2');
+               }
+            }else{
+               if(sendUserInfo($last_name, $first_name, $odbor, $class, $soc, $hash_id, FALSE)){
+                   header('Location: ../user/index.php?ci=inf&s=1');
+               }else{
+                   header('Location: ../user/index.php?ci=inf&f=2');
+               }
+            }
+        }
     }
+
 
   ?>
 

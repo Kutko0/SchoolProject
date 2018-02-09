@@ -13,6 +13,25 @@
         "3E" => "3.E",
         "3F" => "3.F"
     );
+
+    $failMsg1 = "<p style='color:red;font-weight:800;width:350px;margin:auto;margin-top:25px;
+                margin-bottom:-50px;font-size:20px;text-align:center;'>
+                Vsetky polia musia <br> byt vyplnene! </p>";
+    $failMsg2 = "<p style='color:red;font-weight:800;width:350px;margin:auto;margin-top:25px;
+                margin-bottom:-50px;font-size:20px;text-align:center;'>
+                Nastala chyba pri odosielani<br>skuste to znova ! </p>";
+    $successMsg = "<p style='color:green;font-weight:800;width:350px;margin:auto;margin-top:25px;
+                margin-bottom:-50px;font-size:20px;text-align:center;'>
+                Uspesne ulozene!</p>";
+        if(isset($_GET['f'])){
+            if($_GET['f'] == 1){
+                echo $failMsg1;
+            }else{
+                echo $failMsg2;
+            }
+        }else if(isset($_GET['s'])){
+            echo $successMsg;
+        }
 ?>
 
 <div class="defCo">
@@ -39,8 +58,8 @@
             <label for="infoOdbor" style="text-align:center">Odbor :</label>
             <select name="infoOdbor" required>
                 <option value="2675M">2675 M Elektrotechnika</option>
-                <option value="2561M/2694M">2561 M / 2694 M IST</option>
-                <option value="2567M/3957M">2567 M / 3957 M multimédiá</option>
+                <option value="2694M">2694 M IST</option>
+                <option value="2567M/3957M">3957 M Multimédiá</option>
               </select>
           </div>
 
@@ -58,14 +77,14 @@
           <div class="formLine">
             <label for="infoSoc" style="text-align:center">SOČ Kategoria :</label>
             <select name="infoSoc" required>
-                <option value="11_Informatika">11 – Informatika</option>
-                <option value="12_Elektrotechnika_hardware_mechatronika">12 – Elektrotechnika, hardware, mechatronika</option>
+                <option value="11">11 – Informatika</option>
+                <option value="12">12 – Elektrotechnika, hardware, mechatronika</option>
               </select>
             </div>
 
             <p style="color:red;"></p>
-          <button type="button" name="loginBtn" id="actualInfo">Aktualne Info</button>
-          <button type="submit" name="loginBtn">Ulozit Info</button>
+          <button type="button" name="actualInfoBtn" id="actualInfo">Aktualne Info</button>
+          <button type="submit" name="newUserInfoBtn">Ulozit Info</button>
 
         </fieldset>
 

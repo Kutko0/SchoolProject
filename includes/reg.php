@@ -25,7 +25,7 @@
    <div class='defCo'>
    <?php
        if(isset($msg)){
-            echo "<p style='color:red;font-weight:800;width:300px;
+            echo "<p style='color:red;font-weight:800;width:350px;
                 margin:auto;margin-top:25px;margin-bottom:-85px;
                 font-size:20px;'>" . $msg . "</p>";
        }

@@ -23,10 +23,10 @@ function login($type, $name, $pass) {
   $password = hash('sha256', $pass);
   // query to db  
   // comparing name and encrypted password
-  $queryCommand = "SELECT `email`, `heslo`, `first_log`, `real_meno`,`user_id`, `status`
+  $queryCommand = "SELECT `email`, `heslo`, `first_log`, `real_meno`, `hash_id`, `status`
                     FROM `users`
                     WHERE `email` LIKE '" . $mysqli->real_escape_string($name) . "'
-                    AND `heslo` LIKE '" . $password . "' LIMIT 1";    
+                    AND `heslo` LIKE '" . $mysqli->real_escape_string($password) . "' LIMIT 1";
   
   if($result = $mysqli->query($queryCommand)){
       
@@ -35,7 +35,7 @@ function login($type, $name, $pass) {
       // premennej Session, kvoli dalsiemu pouzitiu i inych castiach programu
     $_SESSION['mail'] =  $row[0];
     $_SESSION['rname'] = $row[3];  
-    $_SESSION['user_id'] = $row[4];
+    $_SESSION['hash_id'] = $row[4];
     $_SESSION['status'] = $row[5];
       // ak sa prvy krat prihlasil 'flog' = first_log
         if(intval($row[2]) === 1){
@@ -49,6 +49,7 @@ function login($type, $name, $pass) {
       $mysqli->close();
       
   }else{
+    $mysqli->close();
     die("<h1>SOMETHING WENT WRONG</h1>");
   }
 

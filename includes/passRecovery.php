@@ -8,10 +8,15 @@
         $successMsg = "<p style='color:green;font-weight:800;width:300px;margin:auto;margin-top:25px;margin-bottom:-50px;font-size:20px;'>
         Sprava bola odoslana, <br>na vas e-mail! </p>";
 
+        $fail2Msg = "<p style='color:red;font-weight:800;width:350px;margin:auto;margin-top:25px;margin-bottom:-50px;font-size:20px;'>
+        Nastala chyba pri odosielani, <br>spravy na vas e-mail! </p>";
+
         if(isset($_GET['f'])){
             echo $failMsg;
         }else if(isset($_GET['s'])){
             echo $successMsg;
+        }else if(isset($_GET['ff'])){
+            echo $fail2Msg;
         }
 
     ?>
