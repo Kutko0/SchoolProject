@@ -15,9 +15,8 @@ function connect_to_db(){
 }
 
 
-function login($type, $name, $pass) {
-  
-  // potom pouzi aj type chuju
+function login($name, $pass) {
+
   $mysqli = connect_to_db();
   // encrypt password to match db
   $password = hash('sha256', $pass);
@@ -75,6 +74,54 @@ function registration($email, $name, $pass, $hashID){
 
 }
 
+function sendUserInfo($last_name, $first_name, $odbor, $class, $soc, $hash_id, $decide){
+    $mysqli = connect_to_db();
+    if($decide){
+        $query = "INSERT INTO `users_info` (hash_id, first_name, last_name, odbor, class, soc)
+                    VALUES ('" . $mysqli->real_escape_string($hash_id) . "',
+                        '" . $mysqli->real_escape_string($first_name) . "',
+                        '" . $mysqli->real_escape_string($last_name). "',
+                        '" . $mysqli->real_escape_string($odbor) . "',
+                        '" . $mysqli->real_escape_string($class). "',
+                        '" . $mysqli->real_escape_string($soc). "');";
+
+    }else{
+        $query = "UPDATE `users_info` SET
+                        first_name='" . $mysqli->real_escape_string($first_name) . "',
+                        last_name='" . $mysqli->real_escape_string($last_name) . "',
+                        odbor='" . $mysqli->real_escape_string($odbor) . "',
+                        class='" . $mysqli->real_escape_string($class) . "',
+                        soc='" . $mysqli->real_escape_string($soc) . "'
+                        WHERE hash_id='" . $mysqli->real_escape_string($hash_id) . "';";
+    }
+
+    if($mysqli->query($query) == TRUE){
+        $mysqli->close();
+        return TRUE;
+    }
+
+    $mysqli->close();
+    return FALSE;
+
+}
+
+function savePrihlaska($ucitelHash, $ziakHash, $temaPrace, $typPrace, $poznamka){
+    $mysqli = connect_to_db();
+    $query = "INSERT INTO `prihlasky` (teacher_hash, student_hash, tema, typ, poznamka)
+                    VALUES ('" . $mysqli->real_escape_string($ucitelHash) . "',
+                        '" . $mysqli->real_escape_string($ziakHash) . "',
+                        '" . $mysqli->real_escape_string($temaPrace). "',
+                        '" . $mysqli->real_escape_string($typPrace) . "',
+                        '" . $mysqli->real_escape_string($poznamka). "');";
+
+    if($mysqli->query($query) == TRUE){
+        $mysqli->close();
+        return TRUE;
+    }
+
+    $mysqli->close();
+    return FALSE;
+}
 
 
 

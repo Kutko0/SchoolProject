@@ -1,4 +1,7 @@
 <?php
+function redirect($direction){
+    header('Location: http://localhost:8888/skolaProject/' . $direction);
+}
 
 function requiredInput($str) {
   if(isset($str) === TRUE && empty($str) !== TRUE) {
@@ -47,15 +50,44 @@ function isHashIdInUse($hash, $db){
     return TRUE;
 }
 
+function getHashID($email){
+    $mysqli = connect_to_db();
+    $query = "SELECT `hash_id` FROM `users`
+                WHERE `email` = '" . $mysqli->real_escape_string($email) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $hash_id = $res[0];
+            $mysqli->close();
+        }
+    return $hash_id;
+}
+
+function getEmail($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `email` FROM `users`
+                WHERE `hash_id` = '" . $mysqli->real_escape_string($hash_id) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+        $mysqli->close();
+        return $res[0];
+    }
+    return FALSE;
+}
+
+function getRealName($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `real_meno` FROM `users`
+                WHERE `hash_id` = '" . $mysqli->real_escape_string($hash_id) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+        }
+    return $res[0];
+}
+
 function sendRecoveryMail($email){
+    $hash_id = getHashID($email);
     $to      = 'andrej.kutliak@gmail.com';
     $subject = 'SPSJM | Recovery Password';
-    $message = '<p>Klikni na link, ktore ta presmeruje na stranku kde si zmenis heslo.</p>
-                <br>
-                <br>
-                <br>
-                <a href="http://localhost:8888/skolaProject/passRecovery">Klikni na mna!</a>
-                ';
+    $message = 'Klikni na tento link pre zmenu hesla.
+                https://kutko145.000webhostapp.com/changePass/index.php?emre=' . $hash_id;
     $headers = 'From: kutko145@gmail.com' . "\r\n" .
         'Reply-To: kutko145@gmail.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
@@ -66,36 +98,95 @@ function sendRecoveryMail($email){
     return FALSE;
 }
 
-
-function sendUserInfo($last_name, $first_name, $odbor, $class, $soc, $hash_id, $decide){
-    $mysqli = connect_to_db();
-    if($decide){
-        $query = "INSERT INTO `users_info` (hash_id, first_name, last_name, odbor, class, soc)
-                    VALUES ('" . $mysqli->real_escape_string($hash_id) . "',
-                        '" . $mysqli->real_escape_string($first_name) . "',
-                        '" . $mysqli->real_escape_string($last_name). "',
-                        '" . $mysqli->real_escape_string($odbor) . "',
-                        '" . $mysqli->real_escape_string($class). "',
-                        '" . $mysqli->real_escape_string($soc). "');";
-
-    }else{
-        $query = "UPDATE `users_info` SET
-                        first_name='" . $mysqli->real_escape_string($first_name) . "',
-                        last_name='" . $mysqli->real_escape_string($last_name) . "',
-                        odbor='" . $mysqli->real_escape_string($odbor) . "',
-                        class='" . $mysqli->real_escape_string($class) . "',
-                        soc='" . $mysqli->real_escape_string($soc) . "'
-                        WHERE hash_id='" . $mysqli->real_escape_string($hash_id) . "';";
-    }
-
-    if($mysqli->query($query) == TRUE){
-        $mysqli->close();
+function sendPrihlaskaToTeacher($teacherHash, $studentHash, $tema, $poznamka){
+    $res     = getUserInfo($studentHash);
+    $to      = getEmail($teacherHash);
+    $subject = 'SPSJM | Prihlaska';
+    $message = 'Ziak : ' . getRealName($studentHash) . ',
+                Odbor: ' . $res[2] . ',
+                Trieda: ' . $res[3] . ',
+                Tema: ' . $tema . ',
+                Poznamka: ' . $poznamka . '
+                ';
+    $headers = 'From: noreply@mail.com' . "\r\n" .
+        'Reply-To: noreply@mail.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+    if(mail($to, $subject, $message, $headers)){
         return TRUE;
     }
-
-    $mysqli->close();
     return FALSE;
+}
 
+function sendPrihlaskaToStudent($hash_id){
+    $to      = getEmail($hash_id);
+    $subject = 'SPSJM | Prihlaska';
+    $message = 'Vasa prihlaska bola odoslana ucitelovi na schvalenie.';
+    $headers = 'From: noreply@mail.com' . "\r\n" .
+        'Reply-To: noreply@mail.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+    if(mail($to, $subject, $message, $headers)){
+        return TRUE;
+    }
+    return FALSE;
+}
+
+function getTeachers(){
+    $mysqli = connect_to_db();
+    $query = "SELECT `real_meno`, `hash_id` FROM `users`
+                WHERE `status` = '" . $mysqli->real_escape_string(5) . "';";
+    if($res = $mysqli->query($query)){
+            $mysqli->close();
+        }
+
+    return $res;
+}
+
+function getUserInfo($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `first_name`, `last_name`, `odbor`, `class`, `soc`
+                FROM `users_info`
+                WHERE `hash_id` = '" . $mysqli->real_escape_string($hash_id) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+        }else{
+            return FALSE;
+        }
+    return $res;
+}
+
+function isTeacher($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `status`
+                FROM `users`
+                WHERE `hash_id` = '" . $mysqli->real_escape_string($hash_id) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+            if($res[0] === '5'){
+                return TRUE;
+            }
+        }
+    return FALSE;
+}
+
+function isPending($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `status`
+                FROM `prihlasky`
+                WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+            if($res[0] === '5'){
+                return FALSE;
+            }
+        }
+    return TRUE;
+}
+
+function isLogged(){
+    if(isset($_SESSION['hash_id'])){
+        return TRUE;
+    }
+    return FALSE;
 }
 
 ?>

@@ -77,7 +77,7 @@ footer p,a{
   font-size: 32px;
   font-family: Poppins;
   font-weight: 800;
-  color: rgb(0, 62, 249);
+  color: rgb(22, 72, 224);
   z-index: 10;
 }
 .mainTitle a{
@@ -97,9 +97,9 @@ footer p,a{
   text-align: center;
   font-family: Poppins;
   font-weight: 400;
-  color: #fbfbfb;
-  -webkit-box-shadow: 0px 2px 10px 0px #0500ff;
-  box-shadow: 0px 2px 10px 0px #0500ff;
+  color:#2b2b2b;
+  -webkit-box-shadow: 0px 2px 8px 0px rgb(77, 106, 193);
+  box-shadow: 0px 2px 8px 0px rgb(77, 106, 193);
 }
 .defCo{
   font-family: Poppins;
@@ -111,13 +111,13 @@ footer p,a{
 .mainBubbles{
   line-height: 235px;
   vertical-align: middle;
+  color:#007bff;
   font-size: 22px;
   display: inline-block;
   border-radius: 1000px;
-  box-shadow: 0px 2px 10px 0px #0057ff;
-  -webkit-box-shadow: 0px 2px 10px 0px #0057ff;
+  box-shadow: 0px 1px 8px 0px #0057ff;
+  -webkit-box-shadow: 0px 1px 8px 0px #0057ff;
   background-color: rgba(0, 10, 255, 0.05);
-  border: 0;
   width: 235px;
   height: 235px;
   margin: auto;
@@ -133,18 +133,18 @@ footer p,a{
   margin: auto;
   display: inline-block;
 }
-#blogOp{
+#regOp{
   margin-top: 75px;
-  margin-bottom: 75px;
+  margin-bottom: 65px;
 }
 .mainBubbles:hover{
   text-decoration: none;
-  font-size: 24px;
-  color: #f0f0f0;
-  transition: 0.5s;
-  box-shadow: inset 0px 0px 15px 5px #0042ff;
-  -webkit-box-shadow: inset 0px 0px 15px 5px #0042ff;
-  background-color: rgba(0, 56, 255, 0.4);
+  font-size: 25px;
+  color:#007bff;
+  transition: 0.3s;
+  box-shadow: 0px 2px 9px 0px #0057ff;
+  -webkit-box-shadow: 0px 2px 9px 0px #0057ff;
+  background-color: rgba(0, 10, 255, 0.10);
 }
 .loginForm{
   padding-top: 40px;
@@ -215,7 +215,7 @@ footer p,a{
   float: left;
   font-size: 22px;
 }
-.formLine input, option, select{
+.formLine input, option, select, textarea{
   border-radius: 10px;
   width: 55%;
   float: right;
@@ -399,7 +399,6 @@ footer p,a{
     box-shadow: 0px 3px 10px 0px #0057ff;
     -webkit-box-shadow: 0px 3px 10px 0px #0057ff;
     text-decoration: none;
-    border-radius: 70px;
     color: rgb(0, 62, 249);
 }
 #squarePrihlaska{
@@ -412,8 +411,8 @@ footer p,a{
 #squarePrihlaska:hover{
     background-color: rgba(135, 255, 135, 0.9);
     border: 3px solid rgba(12, 252, 12, 1);
-    box-shadow: 0px 3px 10px 0px rgb(135, 255, 135);
-    -webkit-box-shadow: 0px 3px 10px 0px rgb(135, 255, 135);
+    box-shadow: 0px 3px 10px 0px rgb(12, 255, 12);
+    -webkit-box-shadow: 0px 3px 10px 0px rgb(12, 255, 12);
     color: #FFF;
 }
 #logOffBtn{
@@ -430,50 +429,68 @@ footer p,a{
     right: 15px;
     top: 10vh;
 }
+.ucitelMainArea a{
+    width: 265px;
+    height: 265px;
+    margin-left: 45px;
+    margin-right: 45px;
+    font-size: 26px;
+    background-image: none;
+}
 /* MEDIA SHIT */
 /* LOW SHIT PX */
-@media only screen and (max-width: 550px){
-    .titleCo{
+/* 1600PX */
+@media only screen and (min-width: 1200px) and (max-width: 1600px){
+    #backBtn{
+      width: 55px;
       height: 55px;
-    }
-    .titleCo p{
-      font-size: 12px;
-    }
-    .mainTitle{
-      font-size: 20px;
-    }
-    .defCo{
-      width: 250px;
+      line-height: 45px;
     }
     .mainBubbles{
-      margin-top: 25px;
-      width: 150px;
-      height: 150px;
-      line-height: 150px;
-      font-size: 16px;
-    }
-    .mainBubbles:hover{
-      font-size: 19px;
+      margin-top: 65px;
+      width: 215px;
+      height: 215px;
+      line-height: 215px;
     }
     #blogOp{
-      margin-top: 25px;
-      margin-bottom: 25px;
+      margin-top: 50px;
+      margin-bottom: 65px;
     }
-    #BtnZiak{
-      margin-right: 0px;
+}
+/* 1200PX */
+@media only screen and (min-width: 850px) and (max-width: 1200px){
+    .defCo{
+      width: 800px;
     }
-    #BtnUcitel{
-      margin-left: 0px;
+    .mainBubbles{
+      margin-top: 65px;
+      width: 210px;
+      height: 210px;
+      line-height: 210px;
     }
-    #BtnUcitelDiv{
-      width: 100%;
+    #blogOp{
+      margin-top: 40px;
     }
-
+    #backBtn{
+      width: 40px;
+      height: 40px;
+      line-height: 30px;
+    }
 }
 /* 800 PX */
 @media only screen and (min-width: 550px) and (max-width: 850px){
     .defCo{
       width: 550px;
+    }
+    .loginForm{
+        width: 450px;
+        font-size: 14px;
+    }
+    .formLine label{
+        font-size: 22px;
+    }
+    .formLine option, select, input{
+        font-size: 18px;
     }
     .mainBubbles{
       margin-top: 40px;
@@ -500,42 +517,57 @@ footer p,a{
     }
 
 }
-/* 1200PX */
-@media only screen and (min-width: 850px) and (max-width: 1200px){
-    .defCo{
-      width: 800px;
-    }
-    .mainBubbles{
-      margin-top: 65px;
-      width: 210px;
-      height: 210px;
-      line-height: 210px;
-    }
-    #blogOp{
-      margin-top: 40px;
-    }
-    #backBtn{
-      width: 40px;
-      height: 40px;
-      line-height: 30px;
-    }
-}
-/* 1600PX */
-@media only screen and (min-width: 1200px) and (max-width: 1600px){
-    #backBtn{
-      width: 55px;
+@media only screen and (max-width: 550px){
+    .titleCo{
       height: 55px;
-      line-height: 45px;
+    }
+    #logOffBtn{
+        top:65px;
+        width: 110px;
+        height: 28px;
+        font-size: 14px;
+    }
+    .formLine label{
+        font-size: 22px;
+    }
+    .formLine option, select, input{
+        font-size: 18px;
+    }
+    .loginForm{
+        width: 400px;
+        font-size: 14px;
+    }
+    .titleCo p{
+      font-size: 12px;
+    }
+    .mainTitle{
+      font-size: 20px;
+    }
+    .defCo{
+      width: 400px;
     }
     .mainBubbles{
-      margin-top: 65px;
-      width: 215px;
-      height: 215px;
-      line-height: 215px;
+      margin-top: 25px;
+      width: 150px;
+      height: 150px;
+      line-height: 150px;
+      font-size: 16px;
+    }
+    .mainBubbles:hover{
+      font-size: 19px;
     }
     #blogOp{
-      margin-top: 50px;
-      margin-bottom: 65px;
+      margin-top: 25px;
+      margin-bottom: 25px;
     }
-}
+    #BtnZiak{
+      margin-right: 0px;
+    }
+    #BtnUcitel{
+      margin-left: 0px;
+    }
+    #BtnUcitelDiv{
+      width: 100%;
+    }
 
+}

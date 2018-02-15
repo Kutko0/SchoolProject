@@ -8,39 +8,39 @@
 
     if(isset($_POST['loginBtn']) ){
     //FORM VALIDATION
-      if((requiredInput($_POST['loginName']) !== TRUE) || (requiredInput($_POST['loginPassword']) !== TRUE) ) {
-              header('Location: ../login/index.php?type=' . $_SESSION['type'] . '&f=yy');
+      if((requiredInput($_POST['loginName']) !== TRUE)
+         || (requiredInput($_POST['loginPassword']) !== TRUE) ) {
+              redirect('login/index.php?type=' . $_SESSION['type'] . '&f=yy');
         }else{
           //ak vsetko prebehlo v poriadku pozre sa do DB ci existuje tento vstup
           $name = $_POST['loginName'];
           $password = $_POST['loginPassword'];
             //login je metoda z dbFunc ktora vrati TRUE ak vstup existuje
-            if(login($type, $name, $password) === TRUE){
+            if(login($name, $password) === TRUE){
                 if($_SESSION['flog'] === TRUE){
                     //ak je prvy krat prihlaseny tak ho presmeruje na zmenu hesla
-                    header('Location: ../changePass/');
+                   redirect('changePass/');
                 }else{
                     //inak pojde na jeho home page
-                    header('Location: ../user/');
+                    redirect('user/');
                 }
                  // ak vstup neexistuje vypise fail message
             }else{
-                header('Location: ../login/index.php?type=' . $_SESSION['type'] . '&f=yy');
+                redirect('login/index.php?f=yy');
                 } 
         }
     }else if(isset($_POST['regBtn'])){
-        $email = $_POST['regName'];
-        $pass = $_POST['regPassword'];
-        $passAgain = $_POST['regZPassword'];
-        $realName = $_POST['regRealName'];
 
-        //multiple require func
-        if((requiredInput($email) !== TRUE)
-         || (requiredInput($pass) !== TRUE)
-         || (requiredInput($passAgain) !== TRUE)
-         || (requiredInput($realName) !== TRUE)) {
-              header('Location: ../reg/index.php?f=y1');
+        if((requiredInput($_POST['regName']) !== TRUE)
+         || (requiredInput($_POST['regPassword']) !== TRUE)
+         || (requiredInput($_POST['regZPassword']) !== TRUE)
+         || (requiredInput($_POST['regRealName']) !== TRUE)) {
+              redirect('reg/index.php?f=y1');
         }else{
+            $email = $_POST['regName'];
+            $pass = $_POST['regPassword'];
+            $passAgain = $_POST['regZPassword'];
+            $realName = $_POST['regRealName'];
             if(isEmail($email)){
                 if($pass === $passAgain){
                     if(isEmailInUse($email)){
@@ -53,69 +53,109 @@
                         if(registration($email, $realName, $pass, $hashID)){
                             // presmerovat na jeho ucet
                             $_SESSION['mail'] = $email;
-                            $_SESSION['rmeno'] = $realName;
+                            $_SESSION['rname'] = $realName;
                             $_SESSION['status'] = 1;
                             $_SESSION['hash_id'] = $hashID;
-                            header('Location: ../user/');
+                            redirect('user/');
                         }else{
-                            header('Location: ../reg/index.php?f=y5');
+                            redirect('reg/index.php?f=y5');
                         }
                     }else{
-                        header('Location: ../reg/index.php?f=y4');    
+                        redirect('reg/index.php?f=y4');
                         }
                 }else{
-                    header('Location: ../reg/index.php?f=y3');
+                    redirect('reg/index.php?f=y3');
                     }
             }else{
-                header('Location: ../reg/index.php?f=y2');
+                redirect('reg/index.php?f=y2');
                 }
             }
     }else if(isset($_POST['forgotBtn'])){
-        header('Location: ../passRecovery');
+        redirect('passRecovery/');
 
     }else if(isset($_POST['recoveryBtn'])){
         $email = $_POST['loginName'];
         if(isEmail($email)){
             if(!isEmailInUse($email)){
                 if(sendRecoveryMail($email)){
-                    header('Location: ../passRecovery/index.php?s=1');
+                    redirect('passRecovery/index.php?s=1');
                 }else{
-                    header('Location: ../passRecovery/index.php?ff=1');
+                    redirect('passRecovery/index.php?ff=1');
                 }
-
+            }else{
+                redirect('passRecovery/index.php?fff=1');
             }
         }else{
-            header('Location: ../passRecovery/index.php?f=1');
+            redirect('passRecovery/index.php?f=1');
         }
     }else if(isset($_POST['newUserInfoBtn'])){
-        $last_name = $_POST['infoSurName'];
-        $first_name = $_POST['infoName'];
-        $odbor = $_POST['infoOdbor'];
-        $class = $_POST['infoTrieda'];
-        $soc = $_POST['infoSoc'];
-        $hash_id = $_SESSION['hash_id'];
 
-        if((requiredInput($last_name) !== TRUE)
-         || (requiredInput($first_name) !== TRUE)
-         || (requiredInput($odbor) !== TRUE)
-         || (requiredInput($class) !== TRUE)
-         || (requiredInput($soc) !== TRUE)) {
-              header('Location: ../user/index.php?ci=inf&f=1');
+        if((requiredInput($_POST['infoSurName']) !== TRUE)
+         || (requiredInput($_POST['infoName']) !== TRUE)
+         || (requiredInput($_POST['infoOdbor']) !== TRUE)
+         || (requiredInput($_POST['infoTrieda']) !== TRUE)
+         || (requiredInput($_POST['infoSoc']) !== TRUE)) {
+              redirect('user/index.php?ui=inf&f=1');
         }else{
+            $last_name = $_POST['infoSurName'];
+            $first_name = $_POST['infoName'];
+            $odbor = $_POST['infoOdbor'];
+            $class = $_POST['infoTrieda'];
+            $soc = $_POST['infoSoc'];
+            $hash_id = $_SESSION['hash_id'];
+
             if(isHashIdInUse($hash_id, 'users_info')){
                if(sendUserInfo($last_name, $first_name, $odbor, $class, $soc, $hash_id, TRUE)){
-                   header('Location: ../user/index.php?ci=inf&s=1');
+                   redirect('user/index.php?ui=inf&s=1');
                }else{
-                   header('Location: ../user/index.php?ci=inf&f=2');
+                   redirect('user/index.php?ui=inf&f=2');
                }
             }else{
                if(sendUserInfo($last_name, $first_name, $odbor, $class, $soc, $hash_id, FALSE)){
-                   header('Location: ../user/index.php?ci=inf&s=1');
+                   redirect('user/index.php?ui=inf&s=1');
                }else{
-                   header('Location: ../user/index.php?ci=inf&f=2');
+                   redirect('user/index.php?ui=inf&f=2');
                }
             }
         }
+    }else if(isset($_POST['userPrihBtn'])){
+
+        if((requiredInput($_POST['prihTyp']) !== TRUE)
+         || (requiredInput($_POST['prihTema']) !== TRUE)
+         || (requiredInput($_POST['ucitelVyber']) !== TRUE)){
+              redirect('user/index.php?ui=prih&f=1');
+        }else{
+            $typPrace = $_POST['prihTyp'];
+            $temaPrace = $_POST['prihTema'];
+            $ucitelHash = $_POST['ucitelVyber'];
+            if(isset($_POST['prihPoznamka'])){
+                $poznamka = $_POST['prihPoznamka'];
+            }else{
+                $poznamka = ' ';
+            }
+            $hash_id = $_SESSION['hash_id'];
+
+            if(isTeacher($ucitelHash)){
+                if(isPending($hash_id)){
+                    if((sendPrihlaskaToTeacher($ucitelHash, $hash_id, $temaPrace, $poznamka))
+                       && (sendPrihlaskaToStudent($hash_id))){
+                        if(savePrihlaska($ucitelHash, $hash_id, $temaPrace, $typPrace, $poznamka)){
+
+                        }else{
+                            redirect('user/index.php?ui=prih&f=2');
+                        }
+                    }else{
+                        redirect('user/index.php?ui=prih&fff=1');
+                    }
+                }else{
+                    redirect('user/index.php?ui=prih&ff=1');
+                }
+            }else{
+                redirect('user/index.php?ui=prih&f=2');
+            }
+        }
+    }else{
+        redirect(' ');
     }
 
 

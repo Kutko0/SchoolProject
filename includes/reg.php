@@ -100,6 +100,7 @@
           $('#someText').text("");
           $(this).addClass('valid');
           $(this).removeClass('invalid');
+          $('#subBtnN').prop('disabled', false);
       } else {
           $('#someText').text("Hesla musi obsahovat minimalne 6 znakov!");
           $(".loginForm").css("height", 390);
@@ -115,7 +116,6 @@
           if(tmpval >= 6) {
               $(this).addClass('valid');
               $(this).removeClass('invalid');
-              $('#subBtnN').prop('disabled', false);
           } else {
               $(this).addClass('invalid');
               $(this).removeClass('valid');

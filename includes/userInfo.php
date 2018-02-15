@@ -14,6 +14,11 @@
         "3F" => "3.F"
     );
 
+    if(isLogged() === FALSE){
+        session_destroy();
+        redirect(' ');
+    }
+
     $failMsg1 = "<p style='color:red;font-weight:800;width:350px;margin:auto;margin-top:25px;
                 margin-bottom:-50px;font-size:20px;text-align:center;'>
                 Vsetky polia musia <br> byt vyplnene! </p>";
@@ -32,6 +37,19 @@
         }else if(isset($_GET['s'])){
             echo $successMsg;
         }
+    if($actualInfo = getUserInfo($_SESSION['hash_id'])){
+        $last_name = $actualInfo[0];
+        $first_name = $actualInfo[1];
+        $odbor = $actualInfo[2];
+        $class = $actualInfo[3];
+        $soc = $actualInfo[4];
+    }else{
+        $last_name = 'nezadane';
+        $first_name = 'nezadane';
+        $odbor = 'nezadane';
+        $class ='nezadane';
+        $soc = 'nezadane';
+    }
 ?>
 
 <div class="defCo">
@@ -98,11 +116,11 @@
            	<h2>Aktualne info</h2>
         </div>
         <div class='overlaySteps' id='actualInfo'>
-            <p>Priezvisko : <span>MojeHotInfo</span></p>
-            <p>Meno : <span>MojeHotInfo</span></p>
-            <p>Odbor : <span>MojeHotInfo</span></p>
-            <p>Trieda : <span>MojeHotInfo</span></p>
-            <p>SOČ Kategoria : <span>MojeHotInfo</span></p>
+            <p>Priezvisko : <span><?php echo $last_name;?></span></p>
+            <p>Meno : <span><?php echo $first_name;?></span></p>
+            <p>Odbor : <span><?php echo $odbor;?></span></p>
+            <p>Trieda : <span><?php echo $class;?></span></p>
+            <p>SOČ Kategoria : <span><?php echo $soc;?></span></p>
         </div>
         <button id='closeOverlay'>Zavriet</button>
     </div>

@@ -3,7 +3,7 @@
     <?php
 
         $failMsg = "<p style='color:red;font-weight:800;width:300px;margin:auto;margin-top:25px;margin-bottom:-50px;font-size:20px;'>
-        Email nie je <br>zaregistrovany! </p>";
+        Prosim zadajte<br> validny email! </p>";
 
         $successMsg = "<p style='color:green;font-weight:800;width:300px;margin:auto;margin-top:25px;margin-bottom:-50px;font-size:20px;'>
         Sprava bola odoslana, <br>na vas e-mail! </p>";
@@ -11,12 +11,17 @@
         $fail2Msg = "<p style='color:red;font-weight:800;width:350px;margin:auto;margin-top:25px;margin-bottom:-50px;font-size:20px;'>
         Nastala chyba pri odosielani, <br>spravy na vas e-mail! </p>";
 
+        $fail3Msg = "<p style='color:red;font-weight:800;width:300px;margin:auto;margin-top:25px;margin-bottom:-50px;font-size:20px;'>
+        Email nie je <br>zaregistrovany! </p>";
+
         if(isset($_GET['f'])){
             echo $failMsg;
         }else if(isset($_GET['s'])){
             echo $successMsg;
         }else if(isset($_GET['ff'])){
             echo $fail2Msg;
+        }else if(isset($_GET['fff'])){
+            echo $fail3Msg;
         }
 
     ?>
