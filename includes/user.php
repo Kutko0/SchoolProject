@@ -23,7 +23,7 @@
         <div class='howTo'><button id='howToBtn'>Ako na to?</button></div>
         <div class='mainArea'>
             <a href='../user/index.php?ui=inf' class='opSquare'>Moje <br> info</a>
-            <a href='../user/index.php?ui=prh' class='opSquare' id='squarePrihlaska'>Podat <br> prihlasku</a>
+            <a href='../user/index.php?ui=prih' class='opSquare' id='squarePrihlaska'>Podat <br> prihlasku</a>
         </div>
     </div>
 </div>

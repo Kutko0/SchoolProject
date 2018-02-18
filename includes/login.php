@@ -4,7 +4,7 @@
    
     <?php
     
-        $failMsg = "<p style='color:red;font-weight:800;width:300px;margin:auto;margin-top:25px;margin-bottom:-68px;font-size:20px;'>
+        $failMsg = "<p style='color:red;font-weight:800;width:300px;margin:auto;margin-top:25px;margin-bottom:-68px;font-size:20px;text-align:center;'>
         Zle meno alebo heslo,<br> skuste to znova! </p>";
         if(isset($_GET['f'])){
             echo $failMsg;

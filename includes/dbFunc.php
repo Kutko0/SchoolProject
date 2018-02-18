@@ -58,13 +58,15 @@ function login($name, $pass) {
 function registration($email, $name, $pass, $hashID){
     $mysqli = connect_to_db();
     $hashPass = hash('sha256', $pass);
-    $query = "INSERT INTO `users` (email, real_meno, heslo, hash_id, status)
+    $query = "INSERT INTO `users` (email, real_meno, heslo, hash_id, status, first_log)
                 VALUES ('" . $mysqli->real_escape_string($email) . "',
                         '" . $mysqli->real_escape_string($name). "',
                         '" . $mysqli->real_escape_string($hashPass) . "',
                         '" . $mysqli->real_escape_string($hashID). "',
-                        '" . $mysqli->real_escape_string(1). "');";
+                        '" . $mysqli->real_escape_string(1). "',
+                        '" . $mysqli->real_escape_string(0). "');";
     if($mysqli->query($query) == TRUE){
+        $_SESSION['flog'] = FALSE;
         $mysqli->close();
         return TRUE;
     }

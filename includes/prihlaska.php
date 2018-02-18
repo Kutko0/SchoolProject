@@ -17,6 +17,9 @@
     $failMsg4 = "<p style='color:red;font-weight:800;width:350px;margin:auto;margin-top:25px;
                 margin-bottom:-50px;font-size:20px;text-align:center;'>
                 Nastala chyba pri<br>odosielani emailu! </p>";
+    $failMsg5 = "<p style='color:red;font-weight:800;width:350px;margin:auto;margin-top:25px;
+                margin-bottom:-50px;font-size:20px;text-align:center;'>
+                Tento konzultant ta<br>uz raz odmietol! </p>";
     $successMsg = "<p style='color:green;font-weight:800;width:350px;margin:auto;margin-top:25px;
                 margin-bottom:-50px;font-size:20px;text-align:center;'>
                 Uspesne odoslane<br> konzultantovi!</p>";
@@ -30,6 +33,8 @@
             echo $failMsg3;
         }else if(isset($_GET['fff'])){
             echo $failMsg4;
+        }else if(isset($_GET['ffff'])){
+            echo $failMsg5;
         }else if(isset($_GET['s'])){
             echo $successMsg;
         }

@@ -38,8 +38,8 @@
             echo $successMsg;
         }
     if($actualInfo = getUserInfo($_SESSION['hash_id'])){
-        $last_name = $actualInfo[0];
-        $first_name = $actualInfo[1];
+        $last_name = $actualInfo[1];
+        $first_name = $actualInfo[0];
         $odbor = $actualInfo[2];
         $class = $actualInfo[3];
         $soc = $actualInfo[4];

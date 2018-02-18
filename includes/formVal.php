@@ -135,24 +135,50 @@
             }
             $hash_id = $_SESSION['hash_id'];
 
-            if(isTeacher($ucitelHash)){
-                if(isPending($hash_id)){
-                    if((sendPrihlaskaToTeacher($ucitelHash, $hash_id, $temaPrace, $poznamka))
-                       && (sendPrihlaskaToStudent($hash_id))){
-                        if(savePrihlaska($ucitelHash, $hash_id, $temaPrace, $typPrace, $poznamka)){
-
+            if(canSend($hash_id, $ucitelHash)){
+                if(isTeacher($ucitelHash)){
+                    if(isPending($hash_id)){
+                        if(!(sendPrihlaskaToTeacher($ucitelHash, $hash_id, $temaPrace, $poznamka))
+                           && !(sendPrihlaskaToStudent($hash_id))){
+                            if(savePrihlaska($ucitelHash, $hash_id, $temaPrace, $typPrace, $poznamka)){
+                                redirect('user/index.php?ui=prih&s=1');
+                            }else{
+                                redirect('user/index.php?ui=prih&f=2');
+                            }
                         }else{
-                            redirect('user/index.php?ui=prih&f=2');
+                            redirect('user/index.php?ui=prih&fff=1');
                         }
                     }else{
-                        redirect('user/index.php?ui=prih&fff=1');
+                        redirect('user/index.php?ui=prih&ff=1');
                     }
                 }else{
-                    redirect('user/index.php?ui=prih&ff=1');
+                    redirect('user/index.php?ui=prih&f=2');
                 }
             }else{
-                redirect('user/index.php?ui=prih&f=2');
+                redirect('user/index.php?ui=prih&ffff=1');
             }
+        }
+    }else if(isset($_POST['hashN'])){
+        $hash_id = $_POST['hashN'];
+        if(maPrihlasku($hash_id, TRUE)){
+            if(updatePrihlasku($hash_id)){
+                redirect('user/index.php?ti=pp&s=1');
+            }else{
+                redirect('user/index.php?ti=pp&f=2');
+            }
+        }else{
+            redirect('user/index.php?ti=pp&f=1');
+        }
+    }else if(isset($_POST['hashY'])){
+        $hash_id = $_POST['hashY'];
+        if(maPrihlasku($hash_id, TRUE)){
+            if(updatePrihlasku($hash_id,'1')){
+                redirect('user/index.php?ti=pp&s=1');
+            }else{
+                redirect('user/index.php?ti=pp&f=2');
+            }
+        }else{
+            redirect('user/index.php?ti=pp&f=1');
         }
     }else{
         redirect(' ');

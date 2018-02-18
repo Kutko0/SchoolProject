@@ -82,15 +82,40 @@ function getRealName($hash_id){
     return $res[0];
 }
 
+function updatePrihlasku($hash_id, $val='9'){
+    $mysqli = connect_to_db();
+    $query = "UPDATE `prihlasky`
+                SET `status`= '" . $mysqli->real_escape_string($val) . "'
+                WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "'
+                AND `status` = '5';";
+    if($res = $mysqli->query($query)){
+            $mysqli->close();
+            return TRUE;
+        }
+    return FALSE;
+}
+
+function getClass($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `class` FROM `users_info`
+                WHERE `hash_id` = '" . $mysqli->real_escape_string($hash_id) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+        }
+    return $res[0];
+}
+
 function sendRecoveryMail($email){
     $hash_id = getHashID($email);
+    $emailBody = file_get_contents('../includes/emailProto.html');
     $to      = 'andrej.kutliak@gmail.com';
     $subject = 'SPSJM | Recovery Password';
-    $message = 'Klikni na tento link pre zmenu hesla.
-                https://kutko145.000webhostapp.com/changePass/index.php?emre=' . $hash_id;
-    $headers = 'From: kutko145@gmail.com' . "\r\n" .
-        'Reply-To: kutko145@gmail.com' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
+    $message =  strval($emailBody) . $hash_id . '">
+                <b>Klikni sem</b></a></button></div></div>';
+     $headers =  'From: noreply@mail.com' . "\r\n" .
+                'Reply-To: noreply@mail.com' . "\r\n" .
+                'Content-Type: text/html; charset=ISO-8859-1' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
 
     if(mail($to, $subject, $message, $headers)){
         return TRUE;
@@ -102,15 +127,17 @@ function sendPrihlaskaToTeacher($teacherHash, $studentHash, $tema, $poznamka){
     $res     = getUserInfo($studentHash);
     $to      = getEmail($teacherHash);
     $subject = 'SPSJM | Prihlaska';
-    $message = 'Ziak : ' . getRealName($studentHash) . ',
-                Odbor: ' . $res[2] . ',
-                Trieda: ' . $res[3] . ',
-                Tema: ' . $tema . ',
-                Poznamka: ' . $poznamka . '
+    $message = '<h1>Prihlaska</h1>
+                <b>Ziak</b> : ' . getRealName($studentHash) . ',<br>
+                <b>Odbor</b> : ' . $res[2] . ',<br>
+                <b>Trieda</b> : ' . $res[3] . ',<br>
+                <b>Tema</b> : ' . $tema . ',<br>
+                <b>Poznamka</b> : ' . $poznamka . '<br>
                 ';
-    $headers = 'From: noreply@mail.com' . "\r\n" .
-        'Reply-To: noreply@mail.com' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
+    $headers =  'From: noreply@mail.com' . "\r\n" .
+                'Reply-To: noreply@mail.com' . "\r\n" .
+                'Content-Type: text/html; charset=ISO-8859-1' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
     if(mail($to, $subject, $message, $headers)){
         return TRUE;
     }
@@ -127,6 +154,84 @@ function sendPrihlaskaToStudent($hash_id){
     if(mail($to, $subject, $message, $headers)){
         return TRUE;
     }
+    return FALSE;
+}
+
+function canSend($hash_id, $teacherHash){
+     $mysqli = connect_to_db();
+     $query = "SELECT * FROM `prihlasky`
+                WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "'
+                AND `teacher_hash` = '" . $mysqli->real_escape_string($teacherHash) . "';";
+    if($res = $mysqli->query($query) ){
+            $mysqli->close();
+            if($res->num_rows > 0){
+                return FALSE;
+            }
+
+        }
+    return TRUE;
+}
+
+function getKonzultantoveMeno($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `teacher_hash` FROM `prihlasky`
+                WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "'
+                AND `status` = '1';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+        }
+    $meno = getRealName($res[0]);
+    return $meno;
+}
+
+function maPotvrdenuPrihlasku($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `status` FROM `prihlasky`
+                WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+            if($res[0] === '1'){
+                return TRUE;
+            }
+        }
+    return FALSE;
+}
+
+function getPracaInfo($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `tema`, `typ`, `poznamka` FROM `prihlasky`
+                WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "'
+                AND `status` = '1';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+        }
+    return $res;
+}
+
+function getPracePreUcitela($hash_id){
+    $mysqli = connect_to_db();
+    $query = "SELECT `student_hash`, `tema`, `typ`, `poznamka` FROM `prihlasky`
+                WHERE `teacher_hash` = '" . $mysqli->real_escape_string($hash_id) . "'
+                AND `status` = '5';";
+    if($res = $mysqli->query($query)){
+            $mysqli->close();
+        }
+    return $res;
+}
+
+function maPrihlasku($hash_id, $val=FALSE){
+    $mysqli = connect_to_db();
+    $query = "SELECT `status` FROM `prihlasky`
+                WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "';";
+    if($res = $mysqli->query($query)->fetch_row()){
+            $mysqli->close();
+            if($val && ($res[0] === '5')){
+                return TRUE;
+            }
+            if(($res[0] === '5') || ($res[0] === '1')){
+                return TRUE;
+            }
+        }
     return FALSE;
 }
 

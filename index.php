@@ -1,9 +1,13 @@
-<?php
+<?php function redirect($direction){header('Location: http://localhost:8888/skolaProject/' . $direction);}
     session_start();
     if(isset($_POST['logOffButton'])){
         session_destroy();
-    }else if(isset($_SESSION['mail'])){
-        header('Location: ./user/');
+    }else if(isset($_SESSION['mail'])
+             && isset($_SESSION['flog'])
+             && $_SESSION['flog'] === FALSE){
+        redirect('user/');
+    }else{
+        session_destroy();
     }
 
 ?>
@@ -15,7 +19,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta lang="sk">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="photos/logo.png">
@@ -36,7 +39,7 @@
         <a href="./login/" class="loginOp mainBubbles" id="BtnUcitel">Ucitel login</a>
         </div>
         <br>
-        <a href="./reg/" class='mainBubbles' id="blogOp" >Registracia</a>
+        <a href="./reg/" class='mainBubbles' id="regOp" >Registracia</a>
 
       </div>
 

@@ -7,7 +7,18 @@
     if(isset($_GET['ui'])){
         $ui = $_GET['ui'];
         if($ui == 'prih'){
-            include('../includes/prihlaska.php');
+            $hash_id = $_SESSION['hash_id'];
+            if(maPrihlasku($hash_id)){
+                if(maPotvrdenuPrihlasku($hash_id)){
+                    $_SESSION['konzultant'] = getKonzultantoveMeno($_SESSION['hash_id']);
+                    $info = getPracaInfo($hash_id);
+                    include('../includes/maKonzultanta.php');
+                }else{
+                    include('../includes/wait.php');
+                }
+            }else{
+                include('../includes/prihlaska.php');
+            }
         }else if($ui == 'inf'){
             include('../includes/userInfo.php');
         }else{
@@ -18,7 +29,8 @@
         if($ti == 'mz'){
             include('../includes/mojiZiaci.php');
         }else if($ti == 'pp'){
-            include('../includes/podanePrihihlasky.php');
+            $prihlasky = getPracePreUcitela($_SESSION['hash_id']);
+            include('../includes/podanePrihlasky.php');
         }else if($ti == 'oz'){
             include('../includes/odmietnutyZiaci.php');
         }else{
