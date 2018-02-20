@@ -10,12 +10,13 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="../photos/logo.png">
     <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <title>Registracia rocnikoveho projektu</title>
+    <title>Registrácia ročníkového projektu</title>
   </head>
+
   <body>
 
     <div class="main-wrapper">
       <div class="titleCo">
-        <h1 class="mainTitle"><a href="../">Prihlasenie rocnikovej prace</a></h1>
-        <p>Stredna priemyselna skola Jozefa Murgasa</p>
+        <h1 class="mainTitle"><a href='../'>Prihlásenie ročníkovej prace</a></h1>
+        <p>Stredná priemyselná škola Jozefa Murgaša</p>
       </div>

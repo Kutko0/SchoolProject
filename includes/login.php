@@ -14,7 +14,7 @@
     
   <form class="loginForm" action="../includes/formVal.php" method="post">
    
-    <h3 style="color: #007bff;font-family: Poppins;font-weight: 600;margin:auto;padding:0;margin-top:-20px;">Prihlasenie</h3>
+    <h3 style="color: #007bff;font-family: Poppins;font-weight: 600;margin:auto;padding:0;margin-top:-20px;">Prihlásenie</h3>
     
     <fieldset>
       <div class="formLine">

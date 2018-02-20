@@ -15,19 +15,27 @@
     <div class="prihCo">
        <form action="../includes/formVal.php" method="post">
         <?php
+                if($prihlasky->num_rows == 0){
+                    echo '<h2 style="font-family: Poppins;
+                                font-weight: 600;
+                                color: rgba(255, 124, 124,1);
+                                margin-top:25px;">
+                                Ziadne prihlasky!
+                                </h2>';
+                }
                 while ($row = mysqli_fetch_assoc($prihlasky)) {
                     echo "<div class='prihLine'>
                             <p><b>Meno : </b>" . getRealName($row["student_hash"]) . "</p>
                             <p><b>Trieda : </b>" . getClass($row["student_hash"]) . "</p>
                             <p><b>Typ : </b>" . $row["typ"] . "</p>
                             <p><b>Tema : </b>" . $row["tema"] . "</p>
-                            <p><b>Poznamka : </b>" . $row["poznamka"] . "</p>
+                            <p><b>Poznámka : </b>" . $row["poznamka"] . "</p>
                             <button type='submit'  name='hashY'
                                 value='" . $row["student_hash"] . "'
-                                class='yesPrihBtn'>Potvrdit</button>
+                                class='yesPrihBtn'>Potvrdiť</button>
                             <button type='submit' name='hashN'
                                 value='" . $row["student_hash"] . "'
-                                class='noPrihBtn'>Zamietnut</button>
+                                class='noPrihBtn'>Zamietnuť</button>
                         </div>";
                 }
             ?>

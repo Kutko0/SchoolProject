@@ -32,7 +32,7 @@
     ?>
     <form class="loginForm" action="../includes/formVal.php" method="post" id="regForm">
    
-    <h3 style="color: #007bff;font-family: Poppins;font-weight: 600;margin:auto;padding:0;margin-top:-20px;">Registracia</h3>
+    <h3 style="color: #007bff;font-family: Poppins;font-weight: 600;margin:auto;padding:0;margin-top:-20px;">Registrácia</h3>
     
     <fieldset>
       <div class="formLine">
@@ -56,7 +56,7 @@
       </div>
       
       <p style="color:red;" id="someText"></p>
-      <button id="subBtnN" type="submit" name="regBtn">Registrovat</button>
+      <button id="subBtnN" type="submit" name="regBtn">Registrovať</button>
 
     </fieldset>
     

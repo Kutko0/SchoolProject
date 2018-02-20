@@ -27,11 +27,13 @@
     }else if(isset($_GET['ti'])){
         $ti = $_GET['ti'];
         if($ti == 'mz'){
+            $mojiZiaci = getPracePreUcitela($_SESSION['hash_id'], '1');
             include('../includes/mojiZiaci.php');
         }else if($ti == 'pp'){
             $prihlasky = getPracePreUcitela($_SESSION['hash_id']);
             include('../includes/podanePrihlasky.php');
         }else if($ti == 'oz'){
+            $odmietnuty = getPracePreUcitela($_SESSION['hash_id'], '9');
             include('../includes/odmietnutyZiaci.php');
         }else{
             include('../includes/teacher.php');

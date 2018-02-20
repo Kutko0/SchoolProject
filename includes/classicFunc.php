@@ -82,12 +82,12 @@ function getRealName($hash_id){
     return $res[0];
 }
 
-function updatePrihlasku($hash_id, $val='9'){
+function updatePrihlasku($hash_id, $val='9', $status='5'){
     $mysqli = connect_to_db();
     $query = "UPDATE `prihlasky`
                 SET `status`= '" . $mysqli->real_escape_string($val) . "'
                 WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "'
-                AND `status` = '5';";
+                AND `status` = '" . $mysqli->real_escape_string($status) . "';";
     if($res = $mysqli->query($query)){
             $mysqli->close();
             return TRUE;
@@ -208,11 +208,11 @@ function getPracaInfo($hash_id){
     return $res;
 }
 
-function getPracePreUcitela($hash_id){
+function getPracePreUcitela($hash_id, $val='5'){
     $mysqli = connect_to_db();
     $query = "SELECT `student_hash`, `tema`, `typ`, `poznamka` FROM `prihlasky`
                 WHERE `teacher_hash` = '" . $mysqli->real_escape_string($hash_id) . "'
-                AND `status` = '5';";
+                AND `status` = '" . $mysqli->real_escape_string($val) . "';";
     if($res = $mysqli->query($query)){
             $mysqli->close();
         }
@@ -223,14 +223,19 @@ function maPrihlasku($hash_id, $val=FALSE){
     $mysqli = connect_to_db();
     $query = "SELECT `status` FROM `prihlasky`
                 WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "';";
-    if($res = $mysqli->query($query)->fetch_row()){
+    if($res = $mysqli->query($query)){
             $mysqli->close();
-            if($val && ($res[0] === '5')){
+        while ($row = mysqli_fetch_assoc($res)) {
+            if($val === TRUE && ($row["status"] === '5')){
                 return TRUE;
             }
-            if(($res[0] === '5') || ($res[0] === '1')){
+            if($val === '9' && ($row["status"] === '9')){
                 return TRUE;
             }
+            if($val === FALSE && ($row["status"] === '5') || ($row["status"] === '1')){
+                return TRUE;
+            }
+        }
         }
     return FALSE;
 }

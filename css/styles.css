@@ -3,57 +3,57 @@ body{
   margin: 0;
 }
 /*  FONTS  */
-/* poppins-regular - latin */
+/* roboto-regular - greek_cyrillic-ext_cyrillic */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/poppins-v4-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local('Poppins Regular'), local('Poppins-Regular'),
-       url('../fonts/poppins-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/poppins-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/poppins-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/poppins-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/poppins-v4-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+  src: url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-regular.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* poppins-600 - latin */
+/* roboto-500 - greek_cyrillic-ext_cyrillic */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Roboto';
   font-style: normal;
-  font-weight: 600;
-  src: url('../fonts/poppins-v4-latin-600.eot'); /* IE9 Compat Modes */
-  src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
-       url('../fonts/poppins-v4-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/poppins-v4-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/poppins-v4-latin-600.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/poppins-v4-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/poppins-v4-latin-600.svg#Poppins') format('svg'); /* Legacy iOS */
+  font-weight: 500;
+  src: url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-500.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-500.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-500.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* poppins-800 - latin */
+/* roboto-700 - greek_cyrillic-ext_cyrillic */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Roboto';
   font-style: normal;
-  font-weight: 800;
-  src: url('../fonts/poppins-v4-latin-800.eot'); /* IE9 Compat Modes */
-  src: local('Poppins ExtraBold'), local('Poppins-ExtraBold'),
-       url('../fonts/poppins-v4-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/poppins-v4-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/poppins-v4-latin-800.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/poppins-v4-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/poppins-v4-latin-800.svg#Poppins') format('svg'); /* Legacy iOS */
+  font-weight: 700;
+  src: url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-700.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-700.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* poppins-900 - latin */
+/* roboto-900 - greek_cyrillic-ext_cyrillic */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  src: url('../fonts/poppins-v4-latin-900.eot'); /* IE9 Compat Modes */
-  src: local('Poppins Black'), local('Poppins-Black'),
-       url('../fonts/poppins-v4-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/poppins-v4-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/poppins-v4-latin-900.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/poppins-v4-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/poppins-v4-latin-900.svg#Poppins') format('svg'); /* Legacy iOS */
+  src: url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-900.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Black'), local('Roboto-Black'),
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-900.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-900.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-900.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v18-greek_cyrillic-ext_cyrillic-900.svg#Roboto') format('svg'); /* Legacy iOS */
 }
 /***********************************/
 .main-wrapper{
@@ -75,8 +75,8 @@ footer p,a{
 .mainTitle{
   margin: 0;
   font-size: 32px;
-  font-family: Poppins;
-  font-weight: 800;
+  font-family: Roboto;
+  font-weight: 700;
   color: rgb(22, 72, 224);
   z-index: 10;
 }
@@ -95,15 +95,15 @@ footer p,a{
   background-color: rgba(0, 70, 255, 0.15);
   border-bottom: 2px solid  rgb(0, 62, 249);
   text-align: center;
-  font-family: Poppins;
-  font-weight: 400;
+  font-family: Roboto;
+  font-weight: 500;
   color:#2b2b2b;
   -webkit-box-shadow: 0px 2px 8px 0px rgb(77, 106, 193);
   box-shadow: 0px 2px 8px 0px rgb(77, 106, 193);
 }
 .defCo{
-  font-family: Poppins;
-  font-weight: 600;
+  font-family: Roboto;
+  font-weight: 700;
   width: 1200px;
   margin: auto;
   text-align: center;
@@ -167,8 +167,8 @@ footer p,a{
   font-size: 16px;
   line-height: 42px;
   vertical-align: middle;
-  font-style: Poppins;
-  font-weight: 800;
+  font-style: Roboto;
+  font-weight: 900;
   background-color: #FFFFFF;
   color:#4f4f4f;
   cursor: pointer;
@@ -258,7 +258,7 @@ footer p,a{
     display: inline-block;
     width: 40%;
     float: left;
-    font-style: Poppins;
+    font-style: Roboto;
     font-size: 22px;
     vertical-align: middle;
     line-height: 40px;
@@ -268,12 +268,12 @@ footer p,a{
 }
 .userName{
     text-align: left;
-    font-weight: 800;
+    font-weight: 700;
 }
 .userType{
     text-align: right;
     float: right;
-    font-weight: 400;
+    font-weight: 500;
 }
 .howTo{
     margin-top: 10px;
@@ -285,8 +285,8 @@ footer p,a{
     width: 140px;
     height: 35px;
     color: #3a3a3a;
-    font-style: Poppins;
-    font-weight: 600;
+    font-style: Roboto;
+    font-weight: 700;
     font-size: 18px;
     border-radius: 25px;
 }
@@ -325,14 +325,14 @@ footer p,a{
     border-bottom: 2px solid rgb(0, 62, 249);
 }
 .overlayTitle h2{
-    font-family: Poppins;
-    font-weight: 600;
+    font-family: Roboto;
+    font-weight: 700;
 }
 .overlaySteps{
     margin: auto;
     width: 65%;
     margin-top: 10px;
-    font-family: Poppins;
+    font-family: Roboto;
     font-size: 18px;
     font-weight: 400;
 }
@@ -342,8 +342,8 @@ footer p,a{
     width: 140px;
     height: 35px;
     color: rgb(239, 255, 239);
-    font-style: Poppins;
-    font-weight: 600;
+    font-style: Roboto;
+    font-weight: 700;
     font-size: 18px;
     border-radius: 25px;
     position: absolute;
@@ -359,12 +359,12 @@ footer p,a{
 }
 #actualInfo p{
     text-align: center;
-    font-family: Poppins;
-    font-weight: 600;
+    font-family: Roboto;
+    font-weight: 700;
 }
 #actualInfo span{
-    font-family: Poppins;
-    font-weight: 400;
+    font-family: Roboto;
+    font-weight: 500;
 }
 .opSquare{
     transition: 0.3s;
@@ -377,15 +377,16 @@ footer p,a{
     margin-bottom: 15px;
     margin-left: 70px;
     margin-right: 70px;
-    font-style: Poppins;
-    font-weight: 800;
+    font-style: Roboto;
+    font-weight: 900;
     letter-spacing: 5px;
     word-spacing: -10px;
     text-align: center;
     font-size: 30px;
     padding-top: 96px;
     background-color: rgba(112, 165, 249, 0.45);
-    color: #f1f1f1;
+    color: #FFFFFF;
+    text-shadow: 1px 1px black;
     background-image: url("../photos/info.png");
     background-size: auto 185px;
     background-repeat: no-repeat;
@@ -404,16 +405,15 @@ footer p,a{
 #squarePrihlaska{
     background-color: rgba(135, 255, 135, 0.9);
     border: 3px solid rgba(12, 252, 12, 1);
-    color: #F1F1F1;
     background-image: url('../photos/form.png');
     background-size: auto 145px;
 }
 #squarePrihlaska:hover{
-    background-color: rgba(135, 255, 135, 0.9);
+    background-color: rgba(135, 255, 135, 0.5);
     border: 3px solid rgba(12, 252, 12, 1);
+    color:rgba(12, 252, 12, 1);
     box-shadow: 0px 3px 10px 0px rgb(12, 255, 12);
     -webkit-box-shadow: 0px 3px 10px 0px rgb(12, 255, 12);
-    color: #FFF;
 }
 #logOffBtn{
     background-color: #d17070;
@@ -422,8 +422,8 @@ footer p,a{
     height: 35px;
     color: #F5F5F5;
     cursor: pointer;
-    font-style: Poppins;
-    font-weight: 600;
+    font-style: Roboto;
+    font-weight: 700;
     font-size: 18px;
     position: absolute;
     right: 15px;
@@ -446,8 +446,8 @@ footer p,a{
     color: #0f0f0f;
     text-align: center;
     margin: auto;
-    font-family: Poppins;
-    font-weight: 600;
+    font-family: Roboto;
+    font-weight: 700;
 }
 .prihPraca p{
     font-weight: 400;
@@ -459,7 +459,7 @@ footer p,a{
     min-width: 550px;
     min-height: 60vh;
     margin: auto;
-    font-family: Poppins;
+    font-family: Roboto;
     margin-top: 50px;
     margin-bottom: 50px;
     overflow: hidden;
@@ -514,6 +514,34 @@ footer p,a{
     line-height: 37px;
     color: #FFFFFF;
     text-shadow: 1px 1px black;
+}
+#mojZiaci{
+    background-color:rgba(165, 249, 112 , 0.15);
+    border-color:rgb(50, 255, 50);
+    color:#adadad;
+}
+#mojZiaci:hover{
+    transition: 0.3s;
+    border: 3px solid rgb(0, 255, 62);
+    background-color: rgba(112, 255, 165, 0.25);
+    box-shadow: 0px 3px 10px 0px rgb(0, 255, 40);
+    -webkit-box-shadow: 0px 3px 10px 0px rgb(0, 255, 40);
+    text-decoration: none;
+    color: rgb(0, 255, 62 );
+}
+#odZiaci{
+    background-color:rgba(249, 165, 112 , 0.15);
+    border-color:rgb(255, 50, 50);
+    color:#adadad;
+}
+#odZiaci:hover{
+    transition: 0.3s;
+    border: 3px solid rgb(255, 0, 62);
+    background-color: rgba(255, 112, 165, 0.25);
+    box-shadow: 0px 3px 10px 0px rgb(255, 0, 40);
+    -webkit-box-shadow: 0px 3px 10px 0px rgb(255, 0, 40);
+    text-decoration: none;
+    color: rgb(255, 0, 40);
 }
 /* MEDIA SHIT */
 /* LOW SHIT PX */

@@ -22,24 +22,24 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="photos/logo.png">
-    <title>Registracia rocnikoveho projektu</title>
+    <title>Registrácia ročníkového projektu</title>
   </head>
 
   <body>
 
     <div class="main-wrapper">
       <div class="titleCo">
-        <h1 class="mainTitle">Prihlasenie rocnikovej prace</h1>
-        <p>Stredna priemyselna skola Jozefa Murgasa</p>
+        <h1 class="mainTitle">Prihlásenie ročníkovej prace</h1>
+        <p>Stredná priemyselná škola Jozefa Murgaša</p>
       </div>
       <div class="defCo">
 
-        <a href="./login/" class="loginOp mainBubbles" id="BtnZiak">Ziak login</a>
+        <a href="./login/" class="loginOp mainBubbles" id="BtnZiak">Žiak login</a>
         <div id="BtnUcitelDiv">
-        <a href="./login/" class="loginOp mainBubbles" id="BtnUcitel">Ucitel login</a>
+        <a href="./login/" class="loginOp mainBubbles" id="BtnUcitel">Učiteľ login</a>
         </div>
         <br>
-        <a href="./reg/" class='mainBubbles' id="regOp" >Registracia</a>
+        <a href="./reg/" class='mainBubbles' id="regOp" >Registrácia</a>
 
       </div>
 

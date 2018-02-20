@@ -1,29 +1,18 @@
-<?php
-//    switch($_SESSION['status']){
-//        case 1:
-//            $status = 'ziak';
-//            break;
-//        default:
-//            $status = 'Chris Angel';
-//            break;
-//    }
-
-?>
 
 <form action="../" method="post">
-    <button type='submit' name='logOffButton' id='logOffBtn'>Odhlasit</button>
+    <button type='submit' name='logOffButton' id='logOffBtn'>Odhlásiť</button>
 </form>
 
 <div class='defCo'>
     <div class='userInterface'>
         <div class="mainInfo">
             <p class='userName'><b><?php echo $_SESSION['rname']; ?></b></p>
-            <p class='userType'>Typ uctu: ziak <?php // echo $status; ?></p>
+            <p class='userType'>Typ účtu: žiak </p>
         </div>
         <div class='howTo'><button id='howToBtn'>Ako na to?</button></div>
         <div class='mainArea'>
             <a href='../user/index.php?ui=inf' class='opSquare'>Moje <br> info</a>
-            <a href='../user/index.php?ui=prih' class='opSquare' id='squarePrihlaska'>Podat <br> prihlasku</a>
+            <a href='../user/index.php?ui=prih' class='opSquare' id='squarePrihlaska'>Podať <br> prihlášku</a>
         </div>
     </div>
 </div>
@@ -36,12 +25,12 @@
         </div>
         <div class='overlaySteps'>
             <p>1. Nahraj si svoje info (<i>Moje Info</i>)</p>
-            <p>2. Vyber si ucitela (<i>Podat prihlasku</i>)</p>
-            <p>3. Pridaj informacie o svojom<br>
-                &nbsp;&nbsp;&nbsp; projekte (<i>Podat prihlasku</i>)</p>
-            <p>4. Odosli prihlasku</p>
+            <p>2. Vyber si učiteľa (<i>Podat prihlasku</i>)</p>
+            <p>3. Pridaj informácie o svojom<br>
+                &nbsp;&nbsp;&nbsp; projekte (<i>Podat prihlášku</i>)</p>
+            <p>4. Odošli prihlášku</p>
         </div>
-        <button id='closeOverlay'>Zavriet</button>
+        <button id='closeOverlay'>Zavrieť</button>
     </div>
 </div>
 

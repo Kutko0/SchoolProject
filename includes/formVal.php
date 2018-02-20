@@ -180,6 +180,28 @@
         }else{
             redirect('user/index.php?ti=pp&f=1');
         }
+    }else if(isset($_POST['hashYA'])){
+        $hash_id = $_POST['hashYA'];
+        if(maPrihlasku($hash_id, '9')){
+            if(updatePrihlasku($hash_id,'1','9')){
+                redirect('user/index.php?ti=pp&s=1');
+            }else{
+                redirect('user/index.php?ti=pp&f=2');
+            }
+        }else{
+            redirect('user/index.php?ti=pp&f=1');
+        }
+    }else if(isset($_POST['hashNA'])){
+        $hash_id = $_POST['hashNA'];
+        if(maPrihlasku($hash_id)){
+            if(updatePrihlasku($hash_id,'9','1')){
+                redirect('user/index.php?ti=pp&s=1');
+            }else{
+                redirect('user/index.php?ti=pp&f=2');
+            }
+        }else{
+            redirect('user/index.php?ti=pp&f=1');
+        }
     }else{
         redirect(' ');
     }
