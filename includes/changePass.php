@@ -1,6 +1,4 @@
-<?php
-
-  include('../includes/classicFunc.php');
+<?php include('../includes/classicFunc.php');
   include('../includes/dbFunc.php');
 
     if(isset($_SESSION['rname'])){

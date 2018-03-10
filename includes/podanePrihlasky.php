@@ -2,11 +2,11 @@
     if(isset($_GET['f'])){
         echo "<p style='color:red;font-weight:800;width:300px;margin:auto;margin-top:25px;
                     margin-bottom:-40px;font-size:20px;text-align:center;'>
-                    Nastala chyba, skuste<br>to znova neskvor! </p>";
+                    Nastala chyba, skúste<br>to znova neskvôr! </p>";
     }else if(isset($_GET['s'])){
         echo "<p style='color:green;font-weight:800;width:300px;margin:auto;margin-top:25px;
                     margin-bottom:-40px;font-size:20px;text-align:center;'>
-                    Uspesna akcia! </p>";
+                    Uspešná akcia! </p>";
     }
 
 ?>
@@ -20,7 +20,7 @@
                                 font-weight: 600;
                                 color: rgba(255, 124, 124,1);
                                 margin-top:25px;">
-                                Ziadne prihlasky!
+                                Žiadne prihlášky!
                                 </h2>';
                 }
                 while ($row = mysqli_fetch_assoc($prihlasky)) {

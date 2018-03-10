@@ -3,9 +3,7 @@
 
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta lang="sk">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="../photos/logo.png">

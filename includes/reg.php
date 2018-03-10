@@ -14,7 +14,7 @@
             $msg = 'Vase hesla sa nezhoduju !';
         }else if($err == 'Y4'){
             $msg = 'E-mail, ktory ste zadali sa <br> uz pouziva !';
-        }else if($err == 'Y5'){
+        }else{
             $msg = 'Nastala chyba pri registracii <br> skuste to znova neskvor !';
         }
     }
@@ -72,7 +72,6 @@
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
-    $('#subBtnN').prop('disabled', true);
     $('#Rname').blur(function(){
       var tmpval = $(this).val().length;
       if(tmpval >= 3 && validateEmail($(this).val())) {
@@ -100,7 +99,6 @@
           $('#someText').text("");
           $(this).addClass('valid');
           $(this).removeClass('invalid');
-          $('#subBtnN').prop('disabled', false);
       } else {
           $('#someText').text("Hesla musi obsahovat minimalne 6 znakov!");
           $(".loginForm").css("height", 390);

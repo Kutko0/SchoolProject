@@ -24,7 +24,7 @@
 
       <div class="formLine">
         <label for="loginPassword" style="text-align:center">Heslo :</label>
-        <input type="password" name="loginPassword" value="" placeholder="Pa$$w0rd" id="Lpass" >
+        <input type="password" name="loginPassword" value="" placeholder="Heslo123" id="Lpass" >
       </div>
         <p style="color:red;"></p>
       <button type="submit" name="loginBtn">Prihlasit sa</button>

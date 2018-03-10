@@ -7,7 +7,7 @@
                                 font-weight: 600;
                                 color: rgba(255, 124, 124,1);
                                 margin-top:25px;">
-                                Ziadne prihlasky!
+                                Žiadne prihlášky!
                                 </h2>';
                 }
                 while ($row = mysqli_fetch_assoc($odmietnuty)) {

@@ -3,8 +3,8 @@
                 font-weight: 600;
                 color: rgba(255, 124, 124,1);
                 margin-top:25px;">
-                Musis pockat kym konzultant potvrdi<br>
-                alebo zamietne tvoju prihlasku!
+                Musíš počkať kým konzultant potvrdí<br>
+                alebo zamietne tvoju prihlášku!
             </h2>
 
 </div>

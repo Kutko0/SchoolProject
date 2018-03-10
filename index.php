@@ -1,14 +1,25 @@
-<?php function redirect($direction){header('Location: http://localhost:8888/skolaProject/' . $direction);}
-    session_start();
-    if(isset($_POST['logOffButton'])){
-        session_destroy();
-    }else if(isset($_SESSION['mail'])
-             && isset($_SESSION['flog'])
-             && $_SESSION['flog'] === FALSE){
-        redirect('user/');
-    }else{
-        session_destroy();
-    }
+<?php function redirect($direction){header('Location: http://localhost/skolaProject/' . $direction);}
+
+session_start();
+
+if(isset($_POST['logOffButton'])){
+	
+	session_destroy();
+	
+}
+else if(isset($_SESSION['mail'])
+&& isset($_SESSION['flog'])
+&& $_SESSION['flog'] === FALSE){
+	
+	redirect('user/');
+	
+}
+else{
+	
+	session_destroy();
+	
+}
+
 
 ?>
 
@@ -17,8 +28,7 @@
 
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta lang="sk">
+    <meta charset="ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="photos/logo.png">
@@ -44,5 +54,6 @@
       </div>
 
 <?php
-  include('includes/footer.php');
+include('includes/footer.php');
+
 ?>

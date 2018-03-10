@@ -1,4 +1,3 @@
-
 <form action="../" method="post">
     <button type='submit' name='logOffButton' id='logOffBtn'>Odhlásiť</button>
 </form>
