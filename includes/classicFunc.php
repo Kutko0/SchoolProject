@@ -237,9 +237,7 @@ function sendPrihlaskaToTeacher($teacherHash, $studentHash, $tema, $poznamka){
 	'X-Mailer: PHP/' . phpversion();
 	
 	if(mail($to, $subject, $message, $headers)){
-		
 		return TRUE;
-		
 	}
 	
 	return FALSE;
@@ -259,13 +257,10 @@ function sendPrihlaskaToStudent($hash_id){
 	'X-Mailer: PHP/' . phpversion();
 	
 	if(mail($to, $subject, $message, $headers)){
-		
 		return TRUE;
-		
 	}
 	
 	return FALSE;
-	
 }
 
 function haveInfo($hash_id){

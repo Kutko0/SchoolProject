@@ -39,6 +39,9 @@
                             <p><b>Poznámka : </b>" . $row["poznamka"] . "</p>
                             <button value='" . $row["student_hash"] . "'
                                 class='commentBtn'>Dennik</button>
+                            <button value='" . $row["student_hash"] . "'
+                            class='downloadBtn'
+                            style='margin-top:8px;height:40px;'>Download .doc</button>
                         </div>";
                 }
             ?>

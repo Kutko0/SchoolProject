@@ -145,14 +145,10 @@ function savePrihlaska($ucitelHash, $ziakHash, $temaPrace, $typPrace, $poznamka)
 		
 	}
 	
-	
 	$mysqli->close();
 	
 	return FALSE;
 	
 }
-
-
-
 
 ?>
