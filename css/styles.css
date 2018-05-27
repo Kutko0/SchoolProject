@@ -305,6 +305,22 @@ footer p,a{
     left: 0;
     background-color: rgba(0,0,0,0.2);
 }
+.overlayPicBox{
+    width: 1200px;
+    height: auto;
+    position: absolute;
+    z-index: 25;
+    background-color: #1b1e21;
+    border: black solid 3px;
+    border-radius: 5px;
+    overflow: hidden;
+    left: 350px;
+    top: 150px;
+    display: none;
+}
+.overlayPicBox img{
+    margin: auto;
+}
 .overlayMainBox{
     width: 500px;
     min-height: 350px;
@@ -552,7 +568,7 @@ footer p,a{
     text-decoration: none;
     color: rgb(255, 0, 40);
 }
-.prihLine .commentBtn, .commentBtn{
+.commentBtn, .downloadBtn, .prihLine .commentBtn, .downloadBtn{
   background-color: rgba(236, 195, 60, 0.15);
   color: rgba(65, 65, 65, 0.85);
   margin-top: 10px;
@@ -568,11 +584,31 @@ footer p,a{
   border: 2px solid rgba(236, 195, 60, 0.897);
   vertical-align: middle;
 }
-.prihLine .commentBtn:hover, .commentBtn:hover{
+.commentBtn:hover, .prihLine .commentBtn:hover, .downloadBtn:hover{
   transition: 0.3s;
   background-color: rgba(236, 195, 60, 0.85);
-  line-height: 36px;
+  line-height: 35px;
   color: #FFFFFF;
+  text-shadow: 1px 1px black;
+  font-family: Roboto;
+  font-weight: 800;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.prihLine .downloadBtn{
+  background-color: rgba(60, 130, 236, 0.15);
+  color: rgba(48, 48, 48, 0.85);
+  width: 120px;
+  line-height: 35px;
+  font-size: 13px;
+  height: 40px;
+  border: 2px solid rgba(60, 86, 236, 0.897);
+}
+.prihLine .downloadBtn:hover{
+  transition: 0.3s;
+  background-color: rgba(60, 130, 236, 0.85);
+  line-height: 36px;
+  color: rgb(255, 255, 255);
   text-shadow: 1px 1px black;
   font-family: Roboto;
   font-weight: 800;
@@ -594,6 +630,9 @@ footer p,a{
   background-color: rgba(0, 10, 255, 0.10);
   margin-top: 5px;
   float: left;
+}
+.commentLine img{
+    cursor: pointer;
 }
 .commentLine p{
   font-family: Roboto;

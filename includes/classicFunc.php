@@ -530,14 +530,15 @@ function getComments($hash_id){
 					WHERE `prihlaska_id` = '" . $mysqli->real_escape_string($id) . "';";
 
 		if($res2 = $mysqli->query($query)){
-			$mysqli->close();
-			return $res2;
+            $mysqli->close();
+            return $res2;
 		}
 		
 	}
 	$mysqli->close();
 	return FALSE;
 }
+
 
 function addComment($hash_id, $sprava, $ucitel=FALSE){
 	$mysqli = connect_to_db();
@@ -554,6 +555,41 @@ function addComment($hash_id, $sprava, $ucitel=FALSE){
 		$query = "INSERT INTO `dennik_comments` (`prihlaska_id`, `sprava`, `status`)
 						VALUES(" . $mysqli->real_escape_string($id) . ", 
 								\"" . $mysqli->real_escape_string($sprava) . "\", 
+								" . $mysqli->real_escape_string($status) . ");";
+
+		if($mysqli->query($query)){
+			$mysqli->close();
+			return TRUE;
+		}
+		
+	}
+	$mysqli->close();
+	return FALSE;
+}
+
+function addPhoto($hash_id, $pic, $ucitel=FALSE) {
+	$mysqli = connect_to_db();
+	$query = "SELECT `id` FROM `prihlasky`
+				WHERE `student_hash` = '" . $mysqli->real_escape_string($hash_id) . "'
+				AND `status` = '" . $mysqli->real_escape_string(1) . "';";
+	$status = 1;
+	$photo_url = hash('sha256', time() . $hash_id) . $pic['name'];
+
+	if($ucitel){
+		$status = 5;
+	}
+
+	if($res = $mysqli->query($query)->fetch_row()){
+		$id = $res[0];
+		$dir = "../uploadedPhotos/" . $id ;
+		if(!file_exists($dir)){
+			mkdir($dir);
+		}
+		$dir .= "/" . $photo_url;
+		move_uploaded_file($pic['tmp_name'], $dir);
+		$query = "INSERT INTO `dennik_comments` (`prihlaska_id`, `sprava`, `status`)
+						VALUES(" . $mysqli->real_escape_string($id) . ", 
+								\"" . $mysqli->real_escape_string($dir) . "\", 
 								" . $mysqli->real_escape_string($status) . ");";
 
 		if($mysqli->query($query)){
